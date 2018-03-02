@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main_menu" />
+        <activity
+            android:name=".MainActivity_bar"
+            android:label="@string/title_activity_main_bar"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
