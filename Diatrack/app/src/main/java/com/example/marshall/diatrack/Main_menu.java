@@ -1,7 +1,10 @@
 package com.example.marshall.diatrack;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -24,5 +27,7 @@ public class Main_menu extends AppCompatActivity {
 
         });
         graph.addSeries(series);
+
+
     }
 }

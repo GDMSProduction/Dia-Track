@@ -5,8 +5,11 @@
     android:id="@+id/LoginScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:visibility="visible"
+
     tools:context="com.example.marshall.diatrack.MainActivity">
+
 
     <EditText
         android:id="@+id/PassWord"
