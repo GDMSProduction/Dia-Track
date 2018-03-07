@@ -8,7 +8,7 @@
 
     android:visibility="visible"
 
-    tools:context="com.example.marshall.diatrack.MainActivity">
+    tools:context="com.example.marshall.diatrack.LoginActivity">
 
 
     <EditText
