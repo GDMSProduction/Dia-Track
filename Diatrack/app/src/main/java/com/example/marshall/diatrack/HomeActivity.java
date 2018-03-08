@@ -1,5 +1,6 @@
 package com.example.marshall.diatrack;
 
+import android.app.ActionBar;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.FragmentManager;
+import android.widget.Toolbar;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -18,7 +20,6 @@ public class HomeActivity extends AppCompatActivity
 
     //Private Varaibles
     private DrawerLayout mDrawerLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +47,41 @@ public class HomeActivity extends AppCompatActivity
 
         }
 
-
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void ConfigureAndInstall()
     {
         CreateGraph();
         CreateMainMenu();
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
     }
 
-    public void CreateMainMenu()
-    {
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+    public void CreateMainMenu() {
+        mDrawerLayout = findViewById(R.id.drawer_layout2);
 
         NavigationView navigationView = findViewById(R.id.menuNavigationView);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+
+
 
     public void CreateGraph()
     {
