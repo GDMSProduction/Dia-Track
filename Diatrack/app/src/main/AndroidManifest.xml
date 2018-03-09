@@ -21,6 +21,8 @@
             android:name=".MainActivity_bar"
             android:label="@string/title_activity_main_bar"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MealOptionsActivity" />
+        <activity android:name=".GlycoseActivity"></activity>
     </application>
 
 </manifest>

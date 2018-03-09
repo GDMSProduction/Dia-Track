@@ -1,6 +1,7 @@
 package com.example.marshall.diatrack;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.FragmentManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toolbar;
 
 import com.jjoe64.graphview.GraphView;
@@ -26,6 +29,23 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConfigureAndInstall();
+        Button meal = (Button)findViewById(R.id.bt_Meal);
+
+        meal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,MealOptionsActivity.class));
+            }
+        });
+
+        Button glycose = (Button)findViewById(R.id.bt_Glycose);
+
+        glycose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,GlycoseActivity.class));
+            }
+        });
     }
 
     @Override
