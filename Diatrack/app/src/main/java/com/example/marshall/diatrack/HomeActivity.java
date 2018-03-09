@@ -1,6 +1,7 @@
 package com.example.marshall.diatrack;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,9 @@ import android.view.MenuItem;
 import android.app.FragmentManager;
 import android.widget.Toolbar;
 
+import com.example.marshall.diatrack.dummy.Day;
+import com.example.marshall.diatrack.dummy.History;
+import com.example.marshall.diatrack.dummy.SettingsActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -36,11 +40,11 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
         if (id == R.id.nav_Day_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FirstFragment()).commit();
+            startActivity(new Intent(this,Day.class));
         } else if (id == R.id.nav_History_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+            startActivity(new Intent(this,History.class));
         } else if (id == R.id.nav_Settings_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new ThirdFragment()).commit();
+            startActivity(new Intent(this,SettingsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

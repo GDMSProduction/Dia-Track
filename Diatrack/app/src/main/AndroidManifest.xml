@@ -21,6 +21,33 @@
             android:name=".MainActivity_bar"
             android:label="@string/title_activity_main_bar"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dummy.Test"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Day"
+            android:label="@string/title_activity_day"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".History"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dummy.Day"
+            android:label="@string/title_activity_day"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dummy.History"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dummy.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
