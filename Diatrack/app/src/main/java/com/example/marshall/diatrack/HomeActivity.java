@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.FragmentManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toolbar;
 
 import com.example.marshall.diatrack.dummy.Day;
@@ -30,8 +32,26 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConfigureAndInstall();
-    }
 
+        Button btn = (Button) findViewById(R.id.bt_Glycose);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, Glucose.class));
+
+            }
+        });
+        Button bt = (Button) findViewById(R.id.bt_Meal);
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, Meal.class));
+
+            }
+        });
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         //Handle navigation view item clicks here.
