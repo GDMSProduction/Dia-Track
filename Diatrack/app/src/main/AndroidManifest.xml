@@ -50,7 +50,6 @@
         <activity
             android:name=".dummy.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Glucose" />
         <activity android:name=".Meal"></activity>
     </application>
 
