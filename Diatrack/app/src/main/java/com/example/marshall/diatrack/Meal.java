@@ -33,10 +33,6 @@ public class Meal extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String item = (String) adapterView.getItemAtPosition(i);
-
-
-
             }
         });
     }
