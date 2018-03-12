@@ -10,9 +10,8 @@
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <!-- Here is the main screen, what is under the drawer -->
-
     <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout2"
+        android:id="@+id/menuDrawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"

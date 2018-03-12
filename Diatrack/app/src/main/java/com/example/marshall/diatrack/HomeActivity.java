@@ -32,25 +32,6 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConfigureAndInstall();
-
-        Button btn = (Button) findViewById(R.id.bt_Glycose);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, Glucose.class));
-
-            }
-        });
-        Button bt = (Button) findViewById(R.id.bt_Meal);
-
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, Meal.class));
-
-            }
-        });
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -94,18 +75,31 @@ public class HomeActivity extends AppCompatActivity
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        Button meal = (Button) findViewById(R.id.bt_Meal);
+        meal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MealOptionsActivity.class));
+            }
+        });
+
+        Button glycose = (Button) findViewById(R.id.bt_Glycose);
+
+        glycose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, GlycoseActivity.class));
+            }
+        });
     }
 
     public void CreateMainMenu() {
-        mDrawerLayout = findViewById(R.id.drawer_layout2);
+        mDrawerLayout = findViewById(R.id.menuDrawerLayout);
 
         NavigationView navigationView = findViewById(R.id.menuNavigationView);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-
-
-
 
     public void CreateGraph()
     {
@@ -121,6 +115,4 @@ public class HomeActivity extends AppCompatActivity
         });
         graph.addSeries(series);
     }
-
-
 }

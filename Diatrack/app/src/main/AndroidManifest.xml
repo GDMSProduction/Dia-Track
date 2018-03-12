@@ -21,6 +21,8 @@
             android:name=".MainActivity_bar"
             android:label="@string/title_activity_main_bar"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MealOptionsActivity" />
+        <activity android:name=".GlycoseActivity"></activity>
         <activity
             android:name=".dummy.Test"
             android:label="@string/title_activity_test"
@@ -48,7 +50,6 @@
         <activity
             android:name=".dummy.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Glucose" />
         <activity android:name=".Meal"></activity>
     </application>
 
