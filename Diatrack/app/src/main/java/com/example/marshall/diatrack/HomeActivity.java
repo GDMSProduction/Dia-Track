@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toolbar;
 
+import com.example.marshall.diatrack.dummy.Day;
+import com.example.marshall.diatrack.dummy.History;
+import com.example.marshall.diatrack.dummy.SettingsActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -29,25 +32,26 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ConfigureAndInstall();
-        Button meal = (Button)findViewById(R.id.bt_Meal);
+
+
+        Button meal = (Button) findViewById(R.id.bt_Meal);
 
         meal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this,MealOptionsActivity.class));
+                startActivity(new Intent(HomeActivity.this, MealOptionsActivity.class));
             }
         });
 
-        Button glycose = (Button)findViewById(R.id.bt_Glycose);
+        Button glycose = (Button) findViewById(R.id.bt_Glycose);
 
         glycose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this,GlycoseActivity.class));
+                startActivity(new Intent(HomeActivity.this, GlycoseActivity.class));
             }
         });
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         //Handle navigation view item clicks here.
@@ -56,11 +60,11 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
         if (id == R.id.nav_Day_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FirstFragment()).commit();
+            startActivity(new Intent(this,Day.class));
         } else if (id == R.id.nav_History_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+            startActivity(new Intent(this,History.class));
         } else if (id == R.id.nav_Settings_Layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new ThirdFragment()).commit();
+            startActivity(new Intent(this,SettingsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
