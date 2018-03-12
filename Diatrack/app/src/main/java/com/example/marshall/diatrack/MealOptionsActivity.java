@@ -12,42 +12,45 @@ import android.widget.TextView;
 
 public class MealOptionsActivity extends AppCompatActivity {
 
- int[] IMAGES = {R.drawable.cup, R.drawable.chicken, R.drawable.chicken, R.drawable.cup};
+ int[] menuImages = {R.drawable.cup, R.drawable.chicken, R.drawable.chicken, R.drawable.cup};
 
- String[] Names = {"Breakfast", "Lunch", "Dinner", "Snack" };
+ String[] menuNames = {"Breakfast", "Lunch", "Dinner", "Snack" };
 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
      setContentView(R.layout.activity_meal_options);
-     ListView listView =(ListView)findViewById(R.id.listview);
+     CreateList();
+ }
 
+ private void CreateList()
+ {
+     ListView listView =(ListView)findViewById(R.id.listViewMealOptions);
      MealOptionsAdapter mealOptionsAdapter = new MealOptionsAdapter();
      listView.setAdapter(mealOptionsAdapter);
      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
          @Override
          public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-             //Get The Item Name
-           String item = (String) adapterView.getItemAtPosition(i);
-             //Switch
+             String item = (String) adapterView.getItemAtPosition(i);
 
-             //Starta Food List passando a Variavel que tem o nome breakfast.
+
+
          }
      });
  }
 
+
  class MealOptionsAdapter extends BaseAdapter
  {
-
      @Override
      public int getCount() {
-         return IMAGES.length;
+         return menuImages.length;
      }
 
      @Override
      public Object getItem(int i) {
-         return Names[i];
+         return menuNames[i];
      }
 
      @Override
@@ -61,11 +64,11 @@ public class MealOptionsActivity extends AppCompatActivity {
          if (view == null)
             view = getLayoutInflater().inflate(R.layout.meal_options_layout, null);
 
-         ImageView imageView = (ImageView)view.findViewById(R.id.imageView3);
-         TextView textView = (TextView)view.findViewById(R.id.textView_Meal);
+         ImageView imageView = (ImageView)view.findViewById(R.id.mealOptionImage);
+         TextView textView = (TextView)view.findViewById(R.id.mealOptionName);
 
-         imageView.setImageResource(IMAGES[i]);
-         textView.setText(Names[i]);
+         imageView.setImageResource(menuImages[i]);
+         textView.setText(menuNames[i]);
 
          return view;
      }
