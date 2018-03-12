@@ -1,5 +1,6 @@
 package com.example.marshall.diatrack;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,7 @@ public class MealOptionsActivity extends AppCompatActivity {
 
              String item = (String) adapterView.getItemAtPosition(i);
 
-
+             startActivity(new Intent(MealOptionsActivity.this, Meal.class));
 
          }
      });
