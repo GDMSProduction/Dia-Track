@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1036090741062",
+    "firebase_url": "https://diatrack-4e733.firebaseio.com",
+    "project_id": "diatrack-4e733",
+    "storage_bucket": "diatrack-4e733.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036090741062:android:c0f0cc1838151ab7",
+        "android_client_info": {
+          "package_name": "com.example.marshall.diatrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036090741062-n428f3g4hgjgpojbuc8u9d1qkr9kft6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marshall.diatrack",
+            "certificate_hash": "bc1598a0830576b568c22827ae4906ffb38aaf33"
+          }
+        },
+        {
+          "client_id": "1036090741062-cfu5r5arjrf1cps8vr720ejvtsmpiqbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMnXV9KfWTfKY1_Se6XqMEC3FpOK-qBuQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036090741062-cfu5r5arjrf1cps8vr720ejvtsmpiqbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
