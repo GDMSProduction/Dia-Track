@@ -7,11 +7,16 @@
     tools:context="com.example.marshall.diatrack.Meal">
 
 
+
     <ListView
+        android:id="@+id/listViewMealItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listViewMealItems">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="160dp">
 
     </ListView>
+
+
 
 </android.support.constraint.ConstraintLayout>
