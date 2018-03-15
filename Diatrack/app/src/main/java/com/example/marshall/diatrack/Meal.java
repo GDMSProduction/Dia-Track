@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class Meal extends AppCompatActivity {
@@ -21,12 +20,12 @@ public class Meal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
         GetFoodItems();
+
         CreateList();
     }
 
-    private void CreateList()
-    {
-        ListView listView =(ListView)findViewById(R.id.listViewMealItems);
+    private void CreateList() {
+        ListView listView = (ListView) findViewById(R.id.listViewMealItems);
         MealItemsAdapter mealItemsAdapter = new MealItemsAdapter();
         listView.setAdapter(mealItemsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -35,16 +34,16 @@ public class Meal extends AppCompatActivity {
 
             }
         });
+        TextView newtext = (TextView) findViewById(R.id.TestAPI);
     }
 
-    private void GetFoodItems()
-    {
+    private void GetFoodItems() {
         foodItems = new ArrayList<FoodItem>();
 
         FoodItem cake = new FoodItem("Cake", "30");
 
         for (int i = 0; i < 500; i++) {
-           foodItems.add(cake);
+            foodItems.add(cake);
         }
     }
 
@@ -55,22 +54,19 @@ public class Meal extends AppCompatActivity {
         String carbs;
         Integer protein;
 
-        public FoodItem(String _name, String _carbs)
-        {
+        public FoodItem(String _name, String _carbs) {
             name = _name;
             carbs = _carbs;
             protein = 15;
         }
 
-        public String CreateFoodString()
-        {
+        public String CreateFoodString() {
             return name + "         C:" + carbs + " P:" + protein.toString();
         }
 
     }
 
-    class MealItemsAdapter extends BaseAdapter
-    {
+    class MealItemsAdapter extends BaseAdapter {
         @Override
         public int getCount() {
             return foodItems.size();
@@ -92,7 +88,7 @@ public class Meal extends AppCompatActivity {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.meal_items_layout, null);
 
-            TextView textView = (TextView)view.findViewById(R.id.mealOptionName);
+            TextView textView = (TextView) view.findViewById(R.id.mealOptionName);
             String name = foodItems.get(i).CreateFoodString();
             textView.setText(name);
 
@@ -101,6 +97,8 @@ public class Meal extends AppCompatActivity {
 
 
     }
+
+
 }
 
 

@@ -115,4 +115,8 @@ public class HomeActivity extends AppCompatActivity
         });
         graph.addSeries(series);
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
