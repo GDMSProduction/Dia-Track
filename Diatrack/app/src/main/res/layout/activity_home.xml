@@ -49,6 +49,14 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <TextView
+                android:id="@+id/BuildNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="10dp"
+                android:text="Build 0.0.2" />
+
             <Button
                 android:id="@+id/bt_Meal"
                 android:layout_width="115dp"
