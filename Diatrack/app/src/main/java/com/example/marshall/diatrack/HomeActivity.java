@@ -1,6 +1,5 @@
 package com.example.marshall.diatrack;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,11 +11,15 @@ import android.view.MenuItem;
 import android.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
-
 import com.example.marshall.diatrack.dummy.Day;
 import com.example.marshall.diatrack.dummy.History;
 import com.example.marshall.diatrack.dummy.SettingsActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -50,6 +53,27 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }
+        else if (id == R.id.nav_logout) {
+
+            //Firebase Logout
+            FirebaseAuth.getInstance().signOut();
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken("1036090741062-jnpj5tnml0u84vchfn4ud247gn6sqo06.apps.googleusercontent.com")
+                    .requestEmail()
+                    .build();
+
+            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+            // Google sign out
+            mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                    new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+                        }
+                    });
         }
 
         return true;
@@ -119,4 +143,6 @@ public class HomeActivity extends AppCompatActivity
     public void onBackPressed() {
 
     }
+
+
 }
