@@ -11,9 +11,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -23,6 +25,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MealOptionsActivity extends AppCompatActivity {
 
@@ -36,7 +40,7 @@ public class MealOptionsActivity extends AppCompatActivity {
      setContentView(R.layout.activity_meal_options);
      CreateList();
      try {
-         GetData();
+         GetSearch();
      } catch (IOException e) {
          e.printStackTrace();
      }
@@ -90,34 +94,50 @@ public class MealOptionsActivity extends AppCompatActivity {
          textView.setText(menuNames[i]);
 
          return view;
+
      }
  }
-    void GetData() throws IOException {
+    void GetSearch() throws IOException {
 // ...
-        final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
+        //final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://trackapi.nutritionix.com";
+        final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
+        String url ="https://trackapi.nutritionix.com/v2/search/instant ";
+
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         TestAPI.setText(response);
                     }
-                }, new Response.ErrorListener() {
+                },
+                new Response.ErrorListener() {
 
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                })
+        {//no semicolon or coma
             @Override
-            public void onErrorResponse(VolleyError error) {
-                TestAPI.setText("Error not loading");
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("x-app-id:", "90a86e7a");
+                params.put("x-app-key:","e7b6c459a87cc03a794eeac1237d8ce1");
+                params.put("x-remote-user-id:","0");
+                return params;
             }
-        });
+        };
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
+
 
 }
 
