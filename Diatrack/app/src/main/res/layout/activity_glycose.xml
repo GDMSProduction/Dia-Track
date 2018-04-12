@@ -6,4 +6,69 @@
     android:layout_height="match_parent"
     tools:context="com.example.marshall.diatrack.GlycoseActivity">
 
+    <TextView
+        android:id="@+id/Message1"
+        android:layout_width="248dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="444dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="91dp"
+        android:text="When did you read your"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Message2"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="96dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="21dp"
+        android:text="blood sugar level?"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Now"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Message1" />
+
+    <Button
+        android:id="@+id/btn_Now"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="104dp"
+        android:layout_height="77dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="96dp"
+        android:background="@color/DiaColor"
+        android:text="Now"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/butn_Before"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Message2" />
+
+    <Button
+        android:id="@+id/butn_Before"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="105dp"
+        android:layout_height="77dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="363dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/darker_gray"
+        android:text="Before"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Now" />
+
 </android.support.constraint.ConstraintLayout>

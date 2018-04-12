@@ -131,11 +131,12 @@ public class HomeActivity extends AppCompatActivity
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(6, 150),
+                new DataPoint(8, 125),
+                new DataPoint(10, 320),
+                new DataPoint(12, 230),
+                new DataPoint(14.30, 176)
+
 
         });
         graph.addSeries(series);
