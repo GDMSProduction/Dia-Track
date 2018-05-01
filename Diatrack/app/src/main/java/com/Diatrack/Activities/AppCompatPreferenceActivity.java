@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack;
+package com.Diatrack.Activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

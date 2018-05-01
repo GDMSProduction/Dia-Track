@@ -8,23 +8,23 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1036090741062:android:c0f0cc1838151ab7",
+        "mobilesdk_app_id": "1:1036090741062:android:81f0aac79026f016",
         "android_client_info": {
-          "package_name": "com.example.marshall.diatrack"
+          "package_name": "com.Diatrack"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1036090741062-jnpj5tnml0u84vchfn4ud247gn6sqo06.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "1036090741062-n428f3g4hgjgpojbuc8u9d1qkr9kft6g.apps.googleusercontent.com",
+          "client_id": "1036090741062-0t3t4rujbhdach6ah8grhnifd4j4kppu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.marshall.diatrack",
+            "package_name": "com.Diatrack",
             "certificate_hash": "bc1598a0830576b568c22827ae4906ffb38aaf33"
           }
+        },
+        {
+          "client_id": "1036090741062-jnpj5tnml0u84vchfn4ud247gn6sqo06.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "1036090741062-cfu5r5arjrf1cps8vr720ejvtsmpiqbp.apps.googleusercontent.com",

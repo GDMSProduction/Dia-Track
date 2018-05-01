@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack.dummy;
+package com.Diatrack.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

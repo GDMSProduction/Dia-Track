@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack.dummy;
+package com.Diatrack.dummy;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import com.example.marshall.diatrack.R;
+import com.Diatrack.R;
 
 import java.util.List;
 

@@ -8,15 +8,16 @@
     android:layout_height="match_parent"
     android:visibility="visible"
 
-    tools:context="com.example.marshall.diatrack.LoginActivity">
+    tools:context=".Activities.LoginActivity">
 
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="241dp" />
 
     <TextView
         android:id="@+id/Logo"
@@ -27,9 +28,8 @@
         android:fontFamily="cursive"
         android:lineSpacingExtra="30sp"
         android:text="DiaTrack"
-        android:textColor="@color/DiaColor"
-        android:textSize="@android:dimen/app_icon_size"
-        />
+        android:textColor="#5c89c7"
+        android:textSize="@android:dimen/app_icon_size" />
 
 
 

@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack;
+package com.Diatrack.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,24 +16,26 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MealSearch extends AppCompatActivity {
+public class MealSearchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal_search);
+        setContentView(com.Diatrack.R.layout.activity_meal_search);
         try {
             GetSearch();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
     void GetSearch() throws IOException {
 // ...
         //final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
+        final TextView TestAPI = (TextView)findViewById(com.Diatrack.R.id.TestAPI);
         String url ="https://trackapi.nutritionix.com/v2/search/instant ";
 
 
@@ -65,8 +67,10 @@ public class MealSearch extends AppCompatActivity {
                         }
                     };
 
+
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
+
 
 }

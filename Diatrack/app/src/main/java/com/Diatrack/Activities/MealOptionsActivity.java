@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack;
+package com.Diatrack.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,29 +15,24 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MealOptionsActivity extends AppCompatActivity {
 
- int[] menuImages = {R.drawable.cup, R.drawable.chicken, R.drawable.chicken, R.drawable.cup};
+ int[] menuImages = {com.Diatrack.R.drawable.cup, com.Diatrack.R.drawable.chicken, com.Diatrack.R.drawable.chicken, com.Diatrack.R.drawable.cup};
 
  String[] menuNames = {"Breakfast", "Lunch", "Dinner", "Snack" };
 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
-     setContentView(R.layout.activity_meal_options);
+     setContentView(com.Diatrack.R.layout.activity_meal_options);
      CreateList();
      try {
          GetSearch();
@@ -48,7 +43,7 @@ public class MealOptionsActivity extends AppCompatActivity {
 
  private void CreateList()
  {
-     ListView listView =(ListView)findViewById(R.id.listViewMealOptions);
+     ListView listView =(ListView)findViewById(com.Diatrack.R.id.listViewMealOptions);
      MealOptionsAdapter mealOptionsAdapter = new MealOptionsAdapter();
      listView.setAdapter(mealOptionsAdapter);
      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +52,7 @@ public class MealOptionsActivity extends AppCompatActivity {
 
              String item = (String) adapterView.getItemAtPosition(i);
 
-             startActivity(new Intent(MealOptionsActivity.this, Meal.class));
+             startActivity(new Intent(MealOptionsActivity.this, MealActivity.class));
 
          }
      });
@@ -85,10 +80,10 @@ public class MealOptionsActivity extends AppCompatActivity {
      public View getView(int i, View view, ViewGroup viewGroup) {
 
          if (view == null)
-            view = getLayoutInflater().inflate(R.layout.meal_options_layout, null);
+            view = getLayoutInflater().inflate(com.Diatrack.R.layout.meal_options_layout, null);
 
-         ImageView imageView = (ImageView)view.findViewById(R.id.mealOptionImage);
-         TextView textView = (TextView)view.findViewById(R.id.mealOptionName);
+         ImageView imageView = (ImageView)view.findViewById(com.Diatrack.R.id.mealOptionImage);
+         TextView textView = (TextView)view.findViewById(com.Diatrack.R.id.mealOptionName);
 
          imageView.setImageResource(menuImages[i]);
          textView.setText(menuNames[i]);
@@ -102,7 +97,7 @@ public class MealOptionsActivity extends AppCompatActivity {
         //final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
+        final TextView TestAPI = (TextView)findViewById(com.Diatrack.R.id.TestAPI);
         String url ="https://trackapi.nutritionix.com/v2/search/instant ";
 
 

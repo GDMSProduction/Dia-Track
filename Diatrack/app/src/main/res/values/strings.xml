@@ -89,4 +89,5 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_day">Day</string>
     <string name="title_activity_history">History</string>
+    <string name="title_activity_meal_done">MealDone</string>
 </resources>

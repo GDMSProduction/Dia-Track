@@ -1,4 +1,4 @@
-package com.example.marshall.diatrack;
+package com.Diatrack.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,9 +11,10 @@ import android.view.MenuItem;
 import android.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
-import com.example.marshall.diatrack.dummy.Day;
-import com.example.marshall.diatrack.dummy.History;
-import com.example.marshall.diatrack.dummy.SettingsActivity;
+
+import com.Diatrack.Classes.Day;
+import com.Diatrack.Classes.History;
+import com.Diatrack.dummy.SettingsActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -33,7 +34,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(com.Diatrack.R.layout.activity_home);
         ConfigureAndInstall();
     }
     @Override
@@ -43,18 +44,18 @@ public class HomeActivity extends AppCompatActivity
 
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
-        if (id == R.id.nav_Day_Layout) {
+        if (id == com.Diatrack.R.id.nav_Day_Layout) {
             startActivity(new Intent(this,Day.class));
-        } else if (id == R.id.nav_History_Layout) {
+        } else if (id == com.Diatrack.R.id.nav_History_Layout) {
             startActivity(new Intent(this,History.class));
-        } else if (id == R.id.nav_Settings_Layout) {
+        } else if (id == com.Diatrack.R.id.nav_Settings_Layout) {
             startActivity(new Intent(this,SettingsActivity.class));
-        } else if (id == R.id.nav_share) {
+        } else if (id == com.Diatrack.R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == com.Diatrack.R.id.nav_send) {
 
         }
-        else if (id == R.id.nav_logout) {
+        else if (id == com.Diatrack.R.id.nav_logout) {
 
             //Firebase Logout
             FirebaseAuth.getInstance().signOut();
@@ -95,13 +96,13 @@ public class HomeActivity extends AppCompatActivity
         CreateGraph();
         CreateMainMenu();
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(com.Diatrack.R.id.toolbar);
         setSupportActionBar(toolbar);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionBar.setHomeAsUpIndicator(com.Diatrack.R.drawable.ic_menu);
 
-        Button meal = (Button) findViewById(R.id.bt_Meal);
+        Button meal = (Button) findViewById(com.Diatrack.R.id.bt_Meal);
         meal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +110,7 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        Button glycose = (Button) findViewById(R.id.bt_Glycose);
+        Button glycose = (Button) findViewById(com.Diatrack.R.id.bt_Glycose);
 
         glycose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,16 +121,16 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void CreateMainMenu() {
-        mDrawerLayout = findViewById(R.id.menuDrawerLayout);
+        mDrawerLayout = findViewById(com.Diatrack.R.id.menuDrawerLayout);
 
-        NavigationView navigationView = findViewById(R.id.menuNavigationView);
+        NavigationView navigationView = findViewById(com.Diatrack.R.id.menuNavigationView);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void CreateGraph()
     {
 
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(com.Diatrack.R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(6, 150),
                 new DataPoint(8, 125),
