@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import com.Diatrack.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -41,7 +43,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(com.Diatrack.R.id.googleSignInButton).setOnClickListener(this);
 
-
+        Button home = (Button) findViewById(R.id.bt_home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            }
+        });
 
     }
 

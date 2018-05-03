@@ -1,4 +1,4 @@
-package com.example.marshall.Diatrack.Classes;
+package com.Diatrack.Classes;
 
 public class Food {
 

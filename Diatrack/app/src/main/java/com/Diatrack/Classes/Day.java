@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.Diatrack.R;
 
+
 public class Day extends AppCompatActivity {
 
     @Override
@@ -14,7 +15,6 @@ public class Day extends AppCompatActivity {
         setContentView(R.layout.activity_day);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
 }

@@ -31,6 +31,14 @@
         android:textColor="#5c89c7"
         android:textSize="@android:dimen/app_icon_size" />
 
+    <Button
+        android:id="@+id/bt_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="148dp"
+        android:text="Button" />
 
 
 </RelativeLayout>
