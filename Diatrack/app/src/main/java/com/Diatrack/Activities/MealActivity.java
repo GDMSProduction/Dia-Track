@@ -60,7 +60,7 @@ public class MealActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(MealActivity.this, MealDoneActivity.class));
+                startActivity(new Intent(MealActivity.this, SelectedFoodActivity.class));
             }
         });
     }

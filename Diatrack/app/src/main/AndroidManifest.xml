@@ -11,20 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.Diatrack.Activities.LoginActivity">
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.Diatrack.Activities.HomeActivity" />
+        <activity android:name=".Activities.HomeActivity" />
         <activity
             android:name=".MainActivity_bar"
             android:label="@string/title_activity_main_bar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.Diatrack.Activities.MealOptionsActivity" />
-        <activity android:name="com.Diatrack.Activities.GlycoseActivity" />
+        <activity android:name=".Activities.MealOptionsActivity" />
+        <activity android:name=".Activities.GlycoseActivity" />
         <activity
             android:name=".Day"
             android:label="@string/title_activity_day"
@@ -38,18 +38,19 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Diatrack.Classes.Day"
+            android:name=".Classes.Day"
             android:label="@string/title_activity_day"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Diatrack.Classes.History"
+            android:name=".Classes.History"
             android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.Diatrack.dummy.SettingsActivity"
+            android:name=".dummy.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name="com.Diatrack.Activities.MealActivity" />
-        <activity android:name="com.Diatrack.Activities.MealDoneActivity"/>
+        <activity android:name=".Activities.MealActivity" />
+        <activity android:name=".Activities.MealDoneActivity" />
+        <activity android:name=".Activities.SelectedFoodActivity"></activity>
     </application>
 
 </manifest>
