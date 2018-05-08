@@ -108,7 +108,7 @@ public class MealActivity extends AppCompatActivity {
         }
 
     }
-    void GetSearch() throws IOException {
+        void GetSearch() throws IOException {
 // ...
 
 // Instantiate the RequestQueue.
@@ -162,6 +162,19 @@ public class MealActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+    }
+    private void foodNutrition()throws IOException
+    {
+        url ="https://api.nutritionix.com/v2/autocomplete?q=";
+        TextView ntext = (TextView) findViewById(com.Diatrack.R.id.instantSearch);
+        if (ntext.length() >= 3) {
+            url = url + ntext.getText();
+            try {
+                GetSearch();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void ConfigureAndInstall()

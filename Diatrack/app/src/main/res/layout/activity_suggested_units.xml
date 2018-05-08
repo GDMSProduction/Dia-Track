@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.Diatrack.SuggestedUnits">
+
+    <ImageButton
+        android:id="@+id/Up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="172dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="52dp"
+        android:contentDescription="Up Button for units"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <ImageButton
+        android:id="@+id/Down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="362dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginStart="172dp"
+        android:contentDescription="Down button for units"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <EditText
+        android:id="@+id/Units"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="23dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="numberSigned|numberDecimal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/Down"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Up"
+        tools:text="0" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="95dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Down" />
+
+    <TextView
+        android:id="@+id/Carbs_Text"
+        android:layout_width="130dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="217dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="35dp"
+        android:text="Total Carbohydrates"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
+
+    <EditText
+        android:id="@+id/TotalCarbs"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="62dp"
+
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Carbs_Text"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
+</android.support.constraint.ConstraintLayout>
