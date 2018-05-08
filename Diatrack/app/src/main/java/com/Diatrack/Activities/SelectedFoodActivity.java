@@ -12,6 +12,7 @@ import com.Diatrack.R;
 import static com.Diatrack.R.id.txt_quantity;
 
 public class SelectedFoodActivity extends AppCompatActivity {
+    float numtest = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +31,24 @@ public class SelectedFoodActivity extends AppCompatActivity {
     public void button(View view){
         switch(view.getId())
         {
-            float numtest = 1;
             case R.id.btn_up:
                 numtest+=1;
                 TextView t = (TextView) findViewById(txt_quantity);
-                t.setText(Integer.toString(numtest));
+               // t.setText(toString(numtest));
+                break;
+            case R.id.btn_down:
+                 t = (TextView) findViewById(txt_quantity);
                 break;
         }
     }
     public void addone(View v){
-        float numtest = 1;
         numtest += 0.25;
         TextView quantity = (TextView) findViewById(txt_quantity);
         quantity.setText(numtest+"");
     }
 
     public void subtractone(View v){ ;
-        numtest += 0.25;
+        numtest -= 0.25;
         TextView quantity = (TextView) findViewById(txt_quantity);
         quantity.setText(numtest+"");
     }

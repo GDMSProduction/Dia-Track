@@ -33,6 +33,7 @@ public class MealActivity extends AppCompatActivity {
     String url ="https://api.nutritionix.com/v2/autocomplete?q=";
     Timer timer = new Timer();
     MealItemsAdapter adapter;
+    public String mealName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,16 @@ public class MealActivity extends AppCompatActivity {
     }
 
     private void CreateList() {
-        ListView listView = findViewById(com.Diatrack.R.id.foodList);
+        final ListView listView = findViewById(com.Diatrack.R.id.foodList);
         adapter = new MealItemsAdapter();
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
+                mealName = adapter.getItem(pos).toString();
+
+            }
+        });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
