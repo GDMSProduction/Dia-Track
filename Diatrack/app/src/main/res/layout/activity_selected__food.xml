@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.SelectedFoodActivity">
 
-    <EditText
-        android:id="@+id/txt_quantity"
-        style="@android:style/Widget.EditText"
-        android:layout_width="149dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="71dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:paddingLeft="60dp"
-        android:text="1.0"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/btn_up"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_down"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
         android:id="@+id/btn_save"
         android:layout_width="119dp"
@@ -49,7 +29,6 @@
         android:layout_marginRight="83dp"
         android:layout_marginTop="70dp"
         android:clickable="true"
-        android:onClick="addone"
         android:src="@android:drawable/arrow_up_float"
         app:backgroundTint="@color/DiaColor"
         app:layout_constraintBottom_toTopOf="@+id/toolbar2"
@@ -94,6 +73,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_up" />
+
+    <EditText
+        android:id="@+id/txt_quantity"
+        style="@android:style/Widget.EditText"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="71dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:linksClickable="false"
+        android:longClickable="false"
+        android:paddingLeft="60dp"
+        android:text="1.0"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/btn_up"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_down"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editText"
