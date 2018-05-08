@@ -34,6 +34,7 @@ public class MealActivity extends AppCompatActivity {
     Timer timer = new Timer();
     MealItemsAdapter adapter;
     public String mealName = "";
+    private FoodSearch selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +59,15 @@ public class MealActivity extends AppCompatActivity {
         final ListView listView = findViewById(com.Diatrack.R.id.foodList);
         adapter = new MealItemsAdapter();
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
-                mealName = adapter.getItem(pos).toString();
-
-            }
-        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(MealActivity.this, SelectedFoodActivity.class));
+                selectedItem = (FoodSearch) adapter.getItem(i);
+                Intent intent = new Intent(MealActivity.this, SelectedFoodActivity.class);
+                intent.putExtra("Id", selectedItem.GetId());
+                intent.putExtra("Name", selectedItem.CreateFoodString());
+                startActivity(intent);
             }
         });
     }
@@ -170,19 +169,6 @@ public class MealActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-    }
-    private void foodNutrition()throws IOException
-    {
-        url ="https://api.nutritionix.com/v2/autocomplete?q=";
-        TextView ntext = (TextView) findViewById(com.Diatrack.R.id.instantSearch);
-        if (ntext.length() >= 3) {
-            url = url + ntext.getText();
-            try {
-                GetSearch();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void ConfigureAndInstall()

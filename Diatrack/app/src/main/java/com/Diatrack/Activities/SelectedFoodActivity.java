@@ -10,25 +10,36 @@ import android.widget.TextView;
 
 import com.Diatrack.R;
 
+import static com.Diatrack.R.id.foodName;
 import static com.Diatrack.R.id.txt_quantity;
 
 public class SelectedFoodActivity extends AppCompatActivity {
 
     float quantity = 1;
-
+    int id;
+    String name;
     TextView quantityLabel;
+    TextView Foodlabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected__food);
-        Button save = (Button) findViewById(R.id.btn_save);
-        quantityLabel = (TextView) findViewById(txt_quantity);
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getInt("Id");
+        name = bundle.getString("Name");
+
+        Button save = findViewById(R.id.btn_save);
+        quantityLabel =  findViewById(txt_quantity);
+        Foodlabel = findViewById(foodName);
+
+        Foodlabel.setText(name);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectedFoodActivity.this, MealDoneActivity.class));
+
             }
         });
 
