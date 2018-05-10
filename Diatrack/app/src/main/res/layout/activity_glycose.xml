@@ -1,74 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.GlycoseActivity">
+    tools:context=".Activities.GlycoseActivity"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/Message1"
-        android:layout_width="248dp"
-        android:layout_height="32dp"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="444dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="91dp"
-        android:text="When did you read your"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Message2"
-        android:layout_width="192dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="96dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="21dp"
-        android:text="blood sugar level?"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="64dp"
+        android:text="When did you read your blood sugar level?"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Now"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Message1" />
+       />
+
+
 
     <Button
         android:id="@+id/btn_Now"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="104dp"
-        android:layout_height="77dp"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="64dp"
         android:background="@color/DiaColor"
         android:text="Now"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/butn_Before"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Message2" />
+        />
 
     <Button
-        android:id="@+id/butn_Before"
+        android:id="@+id/btn_Before"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="105dp"
-        android:layout_height="77dp"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="363dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="64dp"
         android:background="@android:color/darker_gray"
         android:text="Before"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Now" />
+        android:textSize="18sp" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
