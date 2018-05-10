@@ -158,6 +158,7 @@ public class MealActivity extends AppCompatActivity {
 
         private void foodSearch() throws IOException
         {
+            https://trackapi.nutritionix.com/v2/search/item?nix_item_id=
             url ="https://api.nutritionix.com/v2/autocomplete?q=";
              TextView ntext = (TextView) findViewById(com.Diatrack.R.id.instantSearch);
             if (ntext.length() >= 3) {
