@@ -18,10 +18,11 @@
         tools:openDrawer="start">
 
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/my_toolbar"
@@ -32,61 +33,45 @@
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <Button
-                android:id="@+id/bt_Glycose"
-                android:layout_width="115dp"
-                android:layout_height="90dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="149dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginRight="149dp"
-                android:layout_marginStart="75dp"
-                android:layout_marginTop="450dp"
-                android:text="Glycose"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/Create_Account"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:layout_marginTop="32dp"
+             />
 
-            <TextView
-                android:id="@+id/BuildNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="10dp"
-                android:text="Build 0.0.2" />
-
-            <Button
-                android:id="@+id/bt_Meal"
-                android:layout_width="115dp"
-                android:layout_height="90dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="149dp"
-                android:layout_marginLeft="190dp"
-                android:layout_marginRight="149dp"
-                android:layout_marginStart="190dp"
-                android:layout_marginTop="450dp"
-                android:text="Meal"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/Create_Account"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/graph"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:layout_marginBottom="216dp"
-                android:layout_marginTop="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp">
 
 
-        </FrameLayout>
+                <Button
+                    android:id="@+id/bt_Glycose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:layout_weight="0.5"
+                    android:text="Glycose"
+                    android:textSize="16sp"
+                    />
+
+                <Button
+                    android:id="@+id/bt_Meal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:layout_weight="0.5"
+                    android:text="Meal"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
 
         <include
             layout="@layout/app_bar_main_activity_bar"
