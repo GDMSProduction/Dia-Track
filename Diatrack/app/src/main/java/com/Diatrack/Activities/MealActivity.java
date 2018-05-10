@@ -120,7 +120,6 @@ public class MealActivity extends AppCompatActivity {
 
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView TestAPI = findViewById(com.Diatrack.R.id.instantSearch);
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
