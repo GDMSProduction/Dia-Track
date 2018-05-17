@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,7 +73,7 @@ public class SelectedFoodActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SelectedFoodActivity.this, MealDoneActivity.class));
+                startActivity(new Intent(SelectedFoodActivity.this, SuggestedUnits.class));
 
             }
         });

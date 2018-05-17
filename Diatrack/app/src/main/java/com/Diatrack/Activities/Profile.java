@@ -1,4 +1,4 @@
-package com.Diatrack;
+package com.Diatrack.Activities;
 
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -17,6 +17,7 @@ import static com.Diatrack.R.id.ProfilePicture;
 import static com.Diatrack.R.id.txt_Weight;
 
 import com.Diatrack.Activities.LoginActivity;
+import com.Diatrack.R;
 
 import org.w3c.dom.Text;
 
