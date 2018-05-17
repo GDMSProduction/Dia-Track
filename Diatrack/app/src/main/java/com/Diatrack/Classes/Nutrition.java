@@ -10,7 +10,7 @@ public class Nutrition {
     int Protein;
     int Fat;
 
-    public int GetCarloes() {
+    public int GetCalories() {
         return Calories;
     }
     public int GetCarbs() {
