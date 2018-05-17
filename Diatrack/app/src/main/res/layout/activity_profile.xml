@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.Diatrack.Profile">
+
+    <ImageView
+        android:id="@+id/ProfilePicture"
+        android:layout_width="108dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="440dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="58dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="54dp"
+        android:text="Insulin Sensitivity"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/txt_InsulinSen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilePicture" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="19dp"
+        android:text="Maximum Blood Sugar Level"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/txt_MaxBloodSugar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="15dp"
+        android:text="Minimum Blood Sugar Level"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/txt_MinBloodSugar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Weight"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/txt_Weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="225dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txt_Height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/txt_Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="59dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="14dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilePicture" />
+
+    <EditText
+        android:id="@+id/txt_InsulinSen"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="178dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="8"
+        app:layout_constraintBottom_toTopOf="@+id/txt_MaxBloodSugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_MaxBloodSugar"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="50"
+        app:layout_constraintBottom_toTopOf="@+id/txt_MinBloodSugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_InsulinSen" />
+
+    <EditText
+        android:id="@+id/txt_MinBloodSugar"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="120"
+        app:layout_constraintBottom_toTopOf="@+id/txt_Weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_MaxBloodSugar" />
+
+    <EditText
+        android:id="@+id/txt_Weight"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="150"
+        app:layout_constraintBottom_toTopOf="@+id/txt_Height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_MinBloodSugar" />
+
+    <EditText
+        android:id="@+id/txt_Height"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+
+        android:layout_marginBottom="225dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="5 "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Weight" />
+
+</android.support.constraint.ConstraintLayout>

@@ -240,6 +240,7 @@ public class SelectedFoodActivity extends AppCompatActivity {
 
         // Setting basic post request
         con.setRequestMethod("POST");
+
         con.setRequestProperty("x-app-id", "5f43c2c7");
         con.setRequestProperty("x-app-key","56752728f1bf936321dc126613dd2bac");
         con.setRequestProperty("x-remote-user-id","0");
