@@ -27,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private  GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN = 100;
     private  FirebaseAuth mAuth;
-
+    public String UsersName = "";
+    public String UsersPhoto = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +120,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("Login", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            user.getDisplayName();
+                            UsersName = user.getDisplayName();
+                            UsersPhoto = user.getPhotoUrl().toString();
                             StartHomeAcitivity();
                         } else {
                             // If sign in fails, display a message to the user.

@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,7 +73,7 @@ public class SelectedFoodActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SelectedFoodActivity.this, MealDoneActivity.class));
+                startActivity(new Intent(SelectedFoodActivity.this, SuggestedUnits.class));
 
             }
         });
@@ -240,6 +238,7 @@ public class SelectedFoodActivity extends AppCompatActivity {
 
         // Setting basic post request
         con.setRequestMethod("POST");
+
         con.setRequestProperty("x-app-id", "5f43c2c7");
         con.setRequestProperty("x-app-key","56752728f1bf936321dc126613dd2bac");
         con.setRequestProperty("x-remote-user-id","0");
