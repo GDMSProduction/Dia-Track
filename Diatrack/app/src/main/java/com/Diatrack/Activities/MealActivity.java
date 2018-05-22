@@ -47,7 +47,7 @@ public class MealActivity extends AppCompatActivity {
 
     public void ConfigureAndInstall()
     {
-        Button Meal = (Button) findViewById(com.Diatrack.R.id.bt_meal);
+        Button Meal = findViewById(com.Diatrack.R.id.bt_meal);
 
         Meal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +60,14 @@ public class MealActivity extends AppCompatActivity {
             }
         });
         CreateList();
+        Button done = findViewById(com.Diatrack.R.id.bt_done);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MealActivity.this, SuggestedUnits.class));
+
+            }
+        });
     }
 
     private void CreateList() {

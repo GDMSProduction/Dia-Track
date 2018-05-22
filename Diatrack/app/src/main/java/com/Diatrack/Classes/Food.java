@@ -7,4 +7,7 @@ public class Food {
     public double nf_calories;
     public double nf_total_fat;
     public double nf_protein;
+    public String serving_unit;
+    public double serving_qty;
+
 }

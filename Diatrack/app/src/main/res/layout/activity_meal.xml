@@ -31,8 +31,16 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/foodList"/>
+        android:id="@+id/foodList"
+        android:layout_weight="0.5"
+        android:paddingBottom="8dp"/>
 
+    <Button
+        android:id="@+id/bt_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Done" />
 
 
 </LinearLayout>

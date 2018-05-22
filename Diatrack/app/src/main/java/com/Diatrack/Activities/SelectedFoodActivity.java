@@ -35,6 +35,8 @@ public class SelectedFoodActivity extends AppCompatActivity {
     TextView FoodProtein;
     TextView FoodFat;
     TextView FoodCarbs;
+    TextView FoodUnits;
+    TextView FoodQuantity;
     String url ="https://trackapi.nutritionix.com/v2/natural/nutrients";
     String delims = "[,:]+";
 
@@ -57,12 +59,14 @@ public class SelectedFoodActivity extends AppCompatActivity {
         FoodCarbs = findViewById(R.id.txt_carbs);
         FoodProtein = findViewById(R.id.txt_Protein);
         FoodFat = findViewById(R.id.txt_Fats);
+        FoodUnits = findViewById(R.id.tv_units);
+        FoodQuantity = findViewById(R.id.tv_quantity);
 
         FoodLabel.setText("Loading");
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SelectedFoodActivity.this, MealDoneActivity.class));
+                startActivity(new Intent(SelectedFoodActivity.this, MealActivity.class));
 
             }
         });
@@ -145,6 +149,8 @@ public class SelectedFoodActivity extends AppCompatActivity {
         FoodCalories.setText(foodNutrition.nf_calories+"");
         FoodProtein.setText(foodNutrition.nf_protein+"");
         FoodFat.setText(foodNutrition.nf_total_fat+"");
+        FoodUnits.setText(foodNutrition.serving_unit+"");
+        FoodQuantity.setText(foodNutrition.serving_qty+" ");
     }
 
     public void addone(){
