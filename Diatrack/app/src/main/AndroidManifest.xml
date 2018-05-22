@@ -51,8 +51,9 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".Activities.MealActivity" />
         <activity android:name=".Activities.MealDoneActivity" />
-        <activity android:name=".SuggestedUnits"></activity>
-        <activity android:name=".Activities.SelectedFoodActivity"></activity>
+        <activity android:name=".Activities.SuggestedUnits" />
+        <activity android:name=".Activities.SelectedFoodActivity" />
+        <activity android:name=".Activities.Profile"></activity>
     </application>
 
 </manifest>

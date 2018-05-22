@@ -14,7 +14,6 @@ import android.widget.Button;
 
 import com.Diatrack.Classes.Day;
 import com.Diatrack.Classes.History;
-import com.Diatrack.dummy.SettingsActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -49,7 +48,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == com.Diatrack.R.id.nav_History_Layout) {
             startActivity(new Intent(this,History.class));
         } else if (id == com.Diatrack.R.id.nav_Settings_Layout) {
-            startActivity(new Intent(this,SettingsActivity.class));
+            startActivity(new Intent(this,Profile.class));
         } else if (id == com.Diatrack.R.id.nav_share) {
 
         } else if (id == com.Diatrack.R.id.nav_send) {
