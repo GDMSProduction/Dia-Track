@@ -35,11 +35,13 @@ public class SelectedFoodActivity extends AppCompatActivity {
     TextView FoodProtein;
     TextView FoodFat;
     TextView FoodCarbs;
-    TextView FoodUnits;
-    TextView FoodQuantity;
     String url ="https://trackapi.nutritionix.com/v2/natural/nutrients";
     String delims = "[,:]+";
-
+    Food firstFood;
+double calories;
+double carbs;
+double protein;
+double fats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,32 +61,29 @@ public class SelectedFoodActivity extends AppCompatActivity {
         FoodCarbs = findViewById(R.id.txt_carbs);
         FoodProtein = findViewById(R.id.txt_Protein);
         FoodFat = findViewById(R.id.txt_Fats);
-        FoodUnits = findViewById(R.id.tv_units);
-        FoodQuantity = findViewById(R.id.tv_quantity);
 
         FoodLabel.setText("Loading");
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SelectedFoodActivity.this, MealActivity.class));
+                startActivity(new Intent(SelectedFoodActivity.this, SuggestedUnits.class));
 
             }
         });
 
         FloatingActionButton up = findViewById(R.id.btn_up);
         FloatingActionButton down = findViewById(R.id.btn_down);
-
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addone();
+                addone(firstFood);
             }
         });
         down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (quantity >0 )
-                subtractone();
+                subtractone(firstFood);
             }
         });
     }
@@ -102,8 +101,9 @@ public class SelectedFoodActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         FoodNutritionSearch foodSearches = gson.fromJson(response, FoodNutritionSearch.class);
                         if (foodSearches.foods.length > 0) {
-                         Food firstFood = foodSearches.foods[0];
+                         firstFood = foodSearches.foods[0];
                          updateViewInformation(firstFood);
+                         UpdateFood(firstFood);
                         }
                     }
                 },
@@ -149,18 +149,33 @@ public class SelectedFoodActivity extends AppCompatActivity {
         FoodCalories.setText(foodNutrition.nf_calories+"");
         FoodProtein.setText(foodNutrition.nf_protein+"");
         FoodFat.setText(foodNutrition.nf_total_fat+"");
-        FoodUnits.setText(foodNutrition.serving_unit+"");
-        FoodQuantity.setText(foodNutrition.serving_qty+" ");
-    }
 
-    public void addone(){
+    }
+public void UpdateFood(Food foodNutrition)
+{
+    carbs =foodNutrition.nf_total_carbohydrate;
+    calories = foodNutrition.nf_calories;
+    protein = foodNutrition.nf_protein;
+    fats =foodNutrition.nf_total_fat;
+}
+    public void addone(Food foodNutrition){
         quantity += 0.25;
         quantityLabel.setText(quantity+"");
+        foodNutrition.nf_total_carbohydrate = foodNutrition.nf_total_carbohydrate + (carbs * .25);
+        foodNutrition.nf_calories = foodNutrition.nf_calories +(calories * .25);
+        foodNutrition.nf_protein =  foodNutrition.nf_protein +(protein * .25);
+        foodNutrition.nf_total_fat = foodNutrition.nf_total_fat + (fats * .25);
+        updateViewInformation(foodNutrition);
     }
 
-    public void subtractone(){
+    public void subtractone(Food foodNutrition){
         quantity -= 0.25;
         quantityLabel.setText(quantity+"");
+        foodNutrition.nf_total_carbohydrate = foodNutrition.nf_total_carbohydrate - (carbs * .25);
+        foodNutrition.nf_calories = foodNutrition.nf_calories -(calories * .25);
+        foodNutrition.nf_protein =  foodNutrition.nf_protein -(protein * .25);
+        foodNutrition.nf_total_fat = foodNutrition.nf_total_fat - (fats * .25);
+        updateViewInformation(foodNutrition);
     }
     }
 
