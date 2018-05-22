@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,18 +41,24 @@ public class MealActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.Diatrack.R.layout.activity_meal);
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                try {
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, 0, 5000);
-
         ConfigureAndInstall();
+
+    }
+
+    public void ConfigureAndInstall()
+    {
+        Button Meal = (Button) findViewById(com.Diatrack.R.id.bt_meal);
+
+        Meal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    foodSearch();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         CreateList();
     }
 
@@ -70,6 +77,64 @@ public class MealActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+        void GetSearch() throws IOException {
+// ...
+
+// Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        FoodSearch[] foodSearches = gson.fromJson(response, FoodSearch[].class);
+                        ArrayList<FoodSearch> arrayList = new ArrayList<FoodSearch>(Arrays.asList(foodSearches));
+                        adapter.updateResults(arrayList);
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"API Error",Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {//no semicolon or coma
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("x-app-id", "5f43c2c7");
+                params.put("x-app-key","56752728f1bf936321dc126613dd2bac");
+                params.put("x-remote-user-id","0");
+                return params;
+            }
+        };
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+        private void foodSearch() throws IOException
+        {
+            https://trackapi.nutritionix.com/v2/search/item?nix_item_id=
+            url ="https://api.nutritionix.com/v2/autocomplete?q=";
+             TextView ntext = (TextView) findViewById(com.Diatrack.R.id.instantSearch);
+            if (ntext.length() >= 3) {
+                url = url + ntext.getText();
+                try {
+                    GetSearch();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(),"At least 3 characters",Toast.LENGTH_SHORT).show();
+            }
     }
 
     class MealItemsAdapter extends BaseAdapter {
@@ -115,78 +180,8 @@ public class MealActivity extends AppCompatActivity {
         }
 
     }
-        void GetSearch() throws IOException {
-// ...
-
-// Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Gson gson = new Gson();
-                        FoodSearch[] foodSearches = gson.fromJson(response, FoodSearch[].class);
-                        ArrayList<FoodSearch> arrayList = new ArrayList<FoodSearch>(Arrays.asList(foodSearches));
-                        adapter.updateResults(arrayList);
-                    }
-                },
-                new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //TestAPI.setText(error.getMessage());
-                        //TestAPI.setText("Error, API is unavailable");
-                    }
-                })
-        {//no semicolon or coma
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("x-app-id", "5f43c2c7");
-                params.put("x-app-key","56752728f1bf936321dc126613dd2bac");
-                params.put("x-remote-user-id","0");
-                return params;
-            }
-        };
-
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
-    }
-
-        private void foodSearch() throws IOException
-        {
-            https://trackapi.nutritionix.com/v2/search/item?nix_item_id=
-            url ="https://api.nutritionix.com/v2/autocomplete?q=";
-             TextView ntext = (TextView) findViewById(com.Diatrack.R.id.instantSearch);
-            if (ntext.length() >= 3) {
-                url = url + ntext.getText();
-                try {
-                    GetSearch();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-    }
-
-    public void ConfigureAndInstall()
-    {
-        Button Meal = (Button) findViewById(com.Diatrack.R.id.bt_meal);
-
-        Meal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // startActivity(new Intent(MealActivity.this, MealDoneActivity.class));
-                try {
-                    foodSearch();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });}
 }
+
 
 
 

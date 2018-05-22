@@ -2,15 +2,9 @@ package com.Diatrack.Classes;
 
 public class Food {
 
-    String name;
-    int id;
-    double calories;
-    double carbohydrate;
-    double totalFat;
-
-    public Food() {
-
-
-    }
-
+    public String food_name;
+    public double nf_total_carbohydrate;
+    public double nf_calories;
+    public double nf_total_fat;
+    public double nf_protein;
 }
