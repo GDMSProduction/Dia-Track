@@ -6,130 +6,180 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.Diatrack.Activities.Profile"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/ProfilePicture"
         android:layout_width="108dp"
         android:layout_height="69dp"
-        />
-
-
-    <TextView
-        android:id="@+id/txt_Username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
          />
+</RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txt_Username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insulin Sensitivity"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="0.5"
+        />
+
     <EditText
         android:id="@+id/txt_InsulinSen"
-        android:layout_width="50dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:ems="10"
         android:inputType="numberSigned"
         android:text="8"
+        android:layout_weight="0.5"
+        android:textAlignment="center"
         />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insulin Sensitivity"
-        />
+
 </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/text_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum Blood Sugar Level"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.5"
+            />
         <EditText
             android:id="@+id/txt_MaxBloodSugar"
-            android:layout_width="50dp"
-            android:layout_height="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
             android:inputType="numberSigned"
             android:text="50"
+            android:layout_weight="0.5"
+            android:textAlignment="center"
             />
 
-        <TextView
-            android:id="@+id/text_max"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maximum Blood Sugar Level"
-            />
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Minimum Blood Sugar Level"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="0.5"
+            />
 
         <EditText
             android:id="@+id/txt_MinBloodSugar"
-            android:layout_width="50dp"
-            android:layout_height="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
             android:inputType="numberSigned"
             android:text="120"
+            android:layout_weight="0.5"
+            android:textAlignment="center"
             />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Minimum Blood Sugar Level"
-            />
+
 
     </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="0.5"
+        android:text="Weight"/>
 
     <EditText
         android:id="@+id/txt_Weight"
-        android:layout_width="50dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:ems="10"
+        android:layout_weight="0.5"
+        android:textAlignment="center"
         android:inputType="numberSigned"
         android:text="150"
         />
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight"
-        />
+
+
 </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="0.5"
+        android:text="Height" />
 
     <EditText
     android:id="@+id/txt_Height"
-    android:layout_width="50dp"
-    android:layout_height="22dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@android:color/transparent"
     android:ems="10"
+        android:layout_weight="0.5"
+        android:textAlignment="center"
     android:inputType="numberSigned"
     android:text="5 "
     />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Height"
-        />
-</LinearLayout>
 
+
+</LinearLayout>
 
 </LinearLayout>
