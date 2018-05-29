@@ -47,24 +47,17 @@ public class Profile extends AppCompatActivity {
     TextView usersname;
     String userImage;
     ImageView userImageView;
-    int InsulinSens;
-    int maxBlood;
-    int minBlood;
-    int weight;
-    int height;
-
+    TextView InsulinSens;
+    TextView maxBlood;
+    TextView minBlood;
+    TextView Weight;
+    TextView Height;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        usersname = findViewById(txt_Username);
-        userImageView =findViewById(ProfilePicture);
-        height = txt_Height;
-        InsulinSens = txt_InsulinSen;
-        maxBlood = txt_MinBloodSugar;
-        minBlood = txt_MinBloodSugar;
-        weight = txt_Weight;
 
+        checkforProfile();
         usersname.setText(loginActivity.UsersName);
         userImage = loginActivity.UsersPhoto;
             try {
@@ -77,14 +70,25 @@ public class Profile extends AppCompatActivity {
 
     public void checkforProfile()
     {
+        usersname = findViewById(txt_Username);
+        userImageView =findViewById(ProfilePicture);
+        Height = findViewById(txt_Height);
+        InsulinSens = findViewById(txt_InsulinSen);
+        maxBlood = findViewById(txt_MinBloodSugar);
+        minBlood = findViewById(txt_MinBloodSugar);
+        Weight = findViewById(txt_Weight);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         DocumentReference docRef = db.collection("UserData").document(user.getEmail());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 UserProfileData userProfileData = documentSnapshot.toObject(UserProfileData.class);
+                Height.setText(userProfileData.getHeight());
+                InsulinSens.setText((int) userProfileData.getInsulinSense());
+                maxBlood.setText(userProfileData.getMaxBlood());
+                minBlood.setText(userProfileData.getMinBlood());
+                Weight.setText((int) userProfileData.getWeight());
 
             }
         });

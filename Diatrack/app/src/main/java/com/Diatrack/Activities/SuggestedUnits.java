@@ -9,13 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.Diatrack.Activities.LoginActivity;
+import com.Diatrack.Classes.UserProfileData;
 import com.Diatrack.R;
 
 public class SuggestedUnits extends AppCompatActivity {
 
     float quantity = 1;
     TextView quantityLabel;
-
+    SelectedFoodActivity foodActivity = new SelectedFoodActivity();
+    UserProfileData userProfileData = new UserProfileData();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,8 @@ public class SuggestedUnits extends AppCompatActivity {
         quantityLabel =  findViewById(R.id.Units);
         FloatingActionButton up = findViewById(R.id.bt_up);
         FloatingActionButton down = findViewById(R.id.bt_down);
-
+        float in = (float) (foodActivity.totalCarbs / userProfileData.getInsulinSense());
+        quantityLabel.setText((int) ((int) foodActivity.totalCarbs / in));
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
