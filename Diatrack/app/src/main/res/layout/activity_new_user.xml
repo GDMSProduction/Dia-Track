@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.Diatrack.NewUser">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="79dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="135dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="193dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maximum Blood Sugar"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="367dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diabetes Type"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Target Blood Sugar "
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="298dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minimum Blood Sugar"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insulin Sensivity "
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="496dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/txt_usergender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="-"
+        android:inputType="text"
+        android:text="Name"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="11dp" />
+
+    <EditText
+        android:id="@+id/num_MinBlood"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="427dp" />
+
+    <EditText
+        android:id="@+id/num_MaxBlood"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <EditText
+        android:id="@+id/num_InsulinSens"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="484dp" />
+
+    <EditText
+        android:id="@+id/num_Target"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="287dp" />
+
+    <EditText
+        android:id="@+id/num_Type"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="229dp" />
+
+    <EditText
+        android:id="@+id/num_Age"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="70dp" />
+
+    <EditText
+        android:id="@+id/num_Weight"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <EditText
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <Button
+        android:id="@+id/btn_SaveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="135dp" />
+</android.support.constraint.ConstraintLayout>
