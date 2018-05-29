@@ -1,13 +1,16 @@
 package com.Diatrack.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.Diatrack.NewUser;
 import com.Diatrack.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -21,6 +24,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private  FirebaseAuth mAuth;
     public String UsersName = "";
     public String UsersPhoto = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +93,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void StartHomeAcitivity() {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
+    private void StartNewUser() {
+        startActivity(new Intent(LoginActivity.this, NewUser.class));
+    }
 
     private void SignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -107,7 +122,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+public void checkFirstSignIn()
+{
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    if (user != null && user.getEmail() != null)
+    {
+        DocumentReference docRef = db.collection("UserData").document(user.getEmail());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (!document.exists()) {
+                        StartNewUser();
+                    }
+                }
+            }
+        });
+    }
+
+
+}
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("Login", "firebaseAuthWithGoogle:" + acct.getId());
 
@@ -121,8 +158,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.d("Login", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             user.getDisplayName();
+                            String personName = user.getDisplayName();
+                            String personEmail = user.getEmail();
+                            Uri personPhoto = user.getPhotoUrl();
                             UsersName = user.getDisplayName();
                             UsersPhoto = user.getPhotoUrl().toString();
+                            checkFirstSignIn();
                             StartHomeAcitivity();
                         } else {
                             // If sign in fails, display a message to the user.
