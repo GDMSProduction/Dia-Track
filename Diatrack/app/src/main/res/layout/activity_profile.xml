@@ -16,10 +16,11 @@
     <ImageView
         android:id="@+id/ProfilePicture"
         android:layout_width="108dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="85dp"
         android:layout_centerHorizontal="true"
-         />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@mipmap/ic_launcher" />
 </RelativeLayout>
 
 

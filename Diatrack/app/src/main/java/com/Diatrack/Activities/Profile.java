@@ -18,6 +18,7 @@ import static com.Diatrack.R.id.txt_Weight;
 
 import com.Diatrack.Activities.LoginActivity;
 import com.Diatrack.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
@@ -38,6 +39,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        ConfigureAndInstall();
         usersname = findViewById(txt_Username);
         userImageView =findViewById(ProfilePicture);
         height = txt_Height;
@@ -55,5 +57,13 @@ public class Profile extends AppCompatActivity {
             } catch (Exception e) {
             }
         }
+
+    public void ConfigureAndInstall()
+    {
+        userImageView = findViewById(R.id.ProfilePicture);
+
+//        userImage.
+//                (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl());
+    }
     }
 
