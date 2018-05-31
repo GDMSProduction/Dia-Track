@@ -2,16 +2,25 @@ package com.Diatrack.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.Diatrack.Classes.FoodNutritionSearch;
 import com.Diatrack.NewUser;
 import com.Diatrack.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,14 +33,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private  FirebaseAuth mAuth;
     public String UsersName = "";
     public String UsersPhoto = "";
-
+    TextView error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +115,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -121,7 +129,57 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     }
+    void checkEmail() throws IOException {
 
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://trackapi.nutritionix.com/v2/auth/signup";
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        FoodNutritionSearch foodSearches = gson.fromJson(response, FoodNutritionSearch.class);
+                        if (foodSearches.foods.length > 0) {
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"API Error",Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {//no semicolon or coma
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("x-user-jwt", "0");
+
+                return params;
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                //params.put("food object",selectedFoodActivity.FoodQuantity.toString());
+
+                return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                //return super.getBodyContentType();
+                return "application/x-www-form-urlencoded";
+            }
+        };
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
 public void checkFirstSignIn()
 {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -142,8 +200,6 @@ public void checkFirstSignIn()
             }
         });
     }
-
-
 }
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("Login", "firebaseAuthWithGoogle:" + acct.getId());
@@ -163,8 +219,9 @@ public void checkFirstSignIn()
                             Uri personPhoto = user.getPhotoUrl();
                             UsersName = user.getDisplayName();
                             UsersPhoto = user.getPhotoUrl().toString();
-                            checkFirstSignIn();
                             StartHomeAcitivity();
+                            checkFirstSignIn();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             //Log.w("Login", "signInWithCredential:failure", task.getException());

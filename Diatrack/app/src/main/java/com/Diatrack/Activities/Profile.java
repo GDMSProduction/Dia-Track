@@ -52,12 +52,15 @@ public class Profile extends AppCompatActivity {
     TextView minBlood;
     TextView Weight;
     TextView Height;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        checkforProfile();
+if (user != null && user.getEmail() != null) {
+    checkforProfile();
+}
         usersname.setText(loginActivity.UsersName);
         userImage = loginActivity.UsersPhoto;
             try {
@@ -77,7 +80,6 @@ public class Profile extends AppCompatActivity {
         maxBlood = findViewById(txt_MinBloodSugar);
         minBlood = findViewById(txt_MinBloodSugar);
         Weight = findViewById(txt_Weight);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("UserData").document(user.getEmail());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
