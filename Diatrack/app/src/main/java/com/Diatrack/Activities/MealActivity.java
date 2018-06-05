@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.Diatrack.Classes.FoodNutritionSearch;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,7 +37,7 @@ public class MealActivity extends AppCompatActivity {
     MealItemsAdapter adapter;
     public String mealName = "";
     private FoodSearch selectedItem;
-
+SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +66,65 @@ public class MealActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MealActivity.this, SuggestedUnits.class));
-
+              // try {
+              //     //PostLog();
+              // } catch (IOException e) {
+              //     e.printStackTrace();
+              // }
             }
         });
     }
-
+//    void PostLog() throws IOException {
+//
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//
+//        // Request a string response from the provided URL.
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Gson gson = new Gson();
+//                        FoodNutritionSearch foodSearches = gson.fromJson(response, FoodNutritionSearch.class);
+//                        if (foodSearches.foods.length > 0) {
+//
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getApplicationContext(),"API Error",Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//        {//no semicolon or coma
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("x-user-jwt", "0");
+//
+//                return params;
+//            }
+//
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("food object",selectedFoodActivity.FoodQuantity.toString());
+//
+//                return params;
+//            }
+//
+//            @Override
+//            public String getBodyContentType() {
+//                //return super.getBodyContentType();
+//                return "application/x-www-form-urlencoded";
+//            }
+//        };
+//
+//// Add the request to the RequestQueue.
+//        queue.add(stringRequest);
+//    }
     private void CreateList() {
         final ListView listView = findViewById(com.Diatrack.R.id.foodList);
         adapter = new MealItemsAdapter();

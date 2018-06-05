@@ -37,6 +37,7 @@ public class SelectedFoodActivity extends AppCompatActivity {
     TextView FoodCarbs;
     TextView FoodUnits;
     TextView FoodQuantity;
+    double totalCarbs;
 
     String url ="https://trackapi.nutritionix.com/v2/natural/nutrients";
     String delims = "[,:]+";
@@ -161,6 +162,7 @@ double fats;
 public void UpdateFood(Food foodNutrition)
 {
     carbs =foodNutrition.nf_total_carbohydrate;
+    totalCarbs =foodNutrition.nf_total_carbohydrate;
     calories = foodNutrition.nf_calories;
     protein = foodNutrition.nf_protein;
     fats =foodNutrition.nf_total_fat;
