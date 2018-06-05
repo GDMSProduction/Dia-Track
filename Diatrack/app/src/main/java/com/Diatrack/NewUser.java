@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.Diatrack.Activities.HomeActivity;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import static com.Diatrack.R.id.num_Age;
+import static com.Diatrack.R.id.num_Height;
 import static com.Diatrack.R.id.num_InsulinSens;
 import static com.Diatrack.R.id.num_MaxBlood;
 import static com.Diatrack.R.id.num_MinBlood;
@@ -51,31 +53,32 @@ public class NewUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       uGender = findViewById(R.id.txt_usergender);
-       uAge = findViewById(R.id.num_Age);
-       uHeight = findViewById(R.id.txt_Height);
-       uWeight = findViewById(R.id.num_Weight);
-       uMaxBlood = findViewById(R.id.num_MaxBlood);
-       uMinBlood = findViewById(R.id.num_MinBlood);
-       uTargetBlood = findViewById(R.id.num_Target);
-       uInsulinSens = findViewById(R.id.num_InsulinSens);
-       uType = findViewById(R.id.num_Type);
-        final Map<String, Object> userInfo = new HashMap<>();
-       //userInfo.put("gender", uGender.getText());
-       //userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
-       //userInfo.put("height", uHeight.getText());
-       //userInfo.put("weight", Integer.parseInt(uWeight.getText().toString()));
-       //userInfo.put("maxblood", Integer.parseInt(uMaxBlood.getText().toString()));
-       //userInfo.put("minblood", Integer.parseInt(uMinBlood.getText().toString()));
-       //userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
-       //userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
-       //userInfo.put("type", Integer.parseInt(uType.getText().toString()));
         setContentView(R.layout.activity_new_user);
-       // db.getReference();
+
+
         Button Save = findViewById(R.id.btn_SaveProfile);
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                uGender = findViewById(R.id.txt_usergender);
+                uAge = findViewById(R.id.num_Age);
+                uHeight = findViewById(R.id.num_Height);
+                uWeight = findViewById(R.id.num_Weight);
+                uMaxBlood = findViewById(R.id.num_MaxBlood);
+                uMinBlood = findViewById(R.id.num_MinBlood);
+                uTargetBlood = findViewById(R.id.num_Target);
+                uInsulinSens = findViewById(R.id.num_InsulinSens);
+                uType = findViewById(R.id.num_Type);
+                final Map<String, Object> userInfo = new HashMap<>();
+                userInfo.put("gender", uGender.getText().toString());
+                userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
+                userInfo.put("height", Integer.parseInt(uHeight.getText().toString()));
+                userInfo.put("weight", Integer.parseInt(uWeight.getText().toString()));
+                userInfo.put("maxblood",Integer.parseInt(uMaxBlood.getText().toString()));
+                userInfo.put("minblood", Integer.parseInt(uMinBlood.getText().toString()));
+                userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
+                userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
+                userInfo.put("type", Integer.parseInt(uAge.getText().toString()));
                 db.collection("UserData").document(user.getUid()).set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -91,6 +94,7 @@ public class NewUser extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

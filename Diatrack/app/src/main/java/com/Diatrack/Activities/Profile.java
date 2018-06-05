@@ -82,10 +82,12 @@ if (user != null && user.getEmail() != null) {
         Weight = findViewById(txt_Weight);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("UserData").document(user.getUid());
+
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 UserProfileData userProfileData = documentSnapshot.toObject(UserProfileData.class);
+                assert userProfileData != null;
                 Height.setText(userProfileData.getHeight());
                 InsulinSens.setText((int) userProfileData.getInsulinSense());
                 maxBlood.setText(userProfileData.getMaxBlood());
