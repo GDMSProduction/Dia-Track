@@ -47,9 +47,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private  GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN = 100;
     private  FirebaseAuth mAuth;
-    public String UsersName = "";
-    public String UsersPhoto = "";
-    TextView error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,15 +184,22 @@ public void checkFirstSignIn()
 
     if (user != null && user.getEmail() != null)
     {
-        DocumentReference docRef = db.collection("UserData").document(user.getEmail());
+
+        DocumentReference docRef = db.collection("UserData").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
-                    if (!document.exists()) {
+                    if (document.exists()) {
+                        StartHomeAcitivity();
+                    }
+                    else{
                         StartNewUser();
                     }
+                }
+                else{
+                    StartNewUser();
                 }
             }
         });
@@ -213,13 +217,6 @@ public void checkFirstSignIn()
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("Login", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            user.getDisplayName();
-                            String personName = user.getDisplayName();
-                            String personEmail = user.getEmail();
-                            Uri personPhoto = user.getPhotoUrl();
-                            UsersName = user.getDisplayName();
-                            UsersPhoto = user.getPhotoUrl().toString();
-                            StartHomeAcitivity();
                             checkFirstSignIn();
 
                         } else {

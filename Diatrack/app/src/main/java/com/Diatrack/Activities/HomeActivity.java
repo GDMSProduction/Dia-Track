@@ -7,19 +7,23 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.Diatrack.Classes.Day;
 import com.Diatrack.Classes.History;
+import com.Diatrack.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -29,6 +33,11 @@ public class HomeActivity extends AppCompatActivity
 
     //Private Varaibles
     private DrawerLayout mDrawerLayout;
+    private NavigationView navigationView;
+
+    TextView name;
+    TextView email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +104,7 @@ public class HomeActivity extends AppCompatActivity
         CreateGraph();
         CreateMainMenu();
 
+
         android.support.v7.widget.Toolbar toolbar = findViewById(com.Diatrack.R.id.toolbar);
         setSupportActionBar(toolbar);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -117,12 +127,24 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(new Intent(HomeActivity.this, GlycoseActivity.class));
             }
         });
+
+        View navHeader = navigationView.getHeaderView(0);
+        name = navHeader.findViewById(R.id.name);
+        email = navHeader.findViewById(R.id.email);
+
+        if(FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null) {
+            name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        }
+
+       if( FirebaseAuth.getInstance().getCurrentUser().getEmail() != null ) {
+           email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+       }
     }
 
     public void CreateMainMenu() {
         mDrawerLayout = findViewById(com.Diatrack.R.id.menuDrawerLayout);
 
-        NavigationView navigationView = findViewById(com.Diatrack.R.id.menuNavigationView);
+        navigationView = findViewById(com.Diatrack.R.id.menuNavigationView);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

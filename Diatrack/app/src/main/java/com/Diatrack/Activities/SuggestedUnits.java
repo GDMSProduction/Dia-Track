@@ -33,8 +33,8 @@ public class SuggestedUnits extends AppCompatActivity {
         quantityLabel =  findViewById(R.id.Units);
         FloatingActionButton up = findViewById(R.id.bt_up);
         FloatingActionButton down = findViewById(R.id.bt_down);
-        float in = (float) (foodActivity.totalCarbs / userProfileData.getInsulinSense());
-        quantityLabel.setText((int) ((int) foodActivity.totalCarbs / in));
+       // float in = (float) (foodActivity.totalCarbs / userProfileData.getInsulinSense());
+       // quantityLabel.setText((int) ((int) foodActivity.totalCarbs / in));
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

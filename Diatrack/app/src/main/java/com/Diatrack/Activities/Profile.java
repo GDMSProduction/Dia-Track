@@ -61,8 +61,8 @@ public class Profile extends AppCompatActivity {
 if (user != null && user.getEmail() != null) {
     checkforProfile();
 }
-        usersname.setText(loginActivity.UsersName);
-        userImage = loginActivity.UsersPhoto;
+       // usersname.setText(loginActivity.UsersName);
+       // userImage = loginActivity.UsersPhoto;
             try {
                 InputStream is = (InputStream) new URL(userImage).getContent();
                 Drawable d = Drawable.createFromStream(is, "src name");
@@ -81,7 +81,7 @@ if (user != null && user.getEmail() != null) {
         minBlood = findViewById(txt_MinBloodSugar);
         Weight = findViewById(txt_Weight);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("UserData").document(user.getEmail());
+        DocumentReference docRef = db.collection("UserData").document(user.getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
