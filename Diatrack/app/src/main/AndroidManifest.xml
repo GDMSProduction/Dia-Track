@@ -53,7 +53,7 @@
         <activity android:name=".Activities.SuggestedUnits" />
         <activity android:name=".Activities.SelectedFoodActivity" />
         <activity android:name=".Activities.Profile" />
-        <activity android:name=".NewUser"></activity>
+        <activity android:name=".Activities.NewUser"></activity>
     </application>
 
 </manifest>

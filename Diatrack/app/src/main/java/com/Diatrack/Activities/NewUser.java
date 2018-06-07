@@ -1,37 +1,24 @@
-package com.Diatrack;
+package com.Diatrack.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.Diatrack.Activities.HomeActivity;
-import com.Diatrack.Activities.LoginActivity;
-import com.android.volley.AuthFailureError;
+import com.Diatrack.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import static com.Diatrack.R.id.num_Age;
-import static com.Diatrack.R.id.num_InsulinSens;
-import static com.Diatrack.R.id.num_MaxBlood;
-import static com.Diatrack.R.id.num_MinBlood;
-import static com.Diatrack.R.id.num_Target;
-import static com.Diatrack.R.id.num_Weight;
-import static com.Diatrack.R.id.num_Type;
-import static com.Diatrack.R.id.txt_Weight;
-import static com.Diatrack.R.id.txt_usergender;
-import static com.Diatrack.R.id.txt_Height;
 
 
 public class NewUser extends AppCompatActivity {
@@ -51,7 +38,6 @@ public class NewUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       uGender = findViewById(R.id.txt_usergender);
        uAge = findViewById(R.id.num_Age);
        uHeight = findViewById(R.id.txt_Height);
        uWeight = findViewById(R.id.num_Weight);
@@ -59,7 +45,6 @@ public class NewUser extends AppCompatActivity {
        uMinBlood = findViewById(R.id.num_MinBlood);
        uTargetBlood = findViewById(R.id.num_Target);
        uInsulinSens = findViewById(R.id.num_InsulinSens);
-       uType = findViewById(R.id.num_Type);
         final Map<String, Object> userInfo = new HashMap<>();
        //userInfo.put("gender", uGender.getText());
        //userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
@@ -92,5 +77,21 @@ public class NewUser extends AppCompatActivity {
             }
         });
 
+
+    }
+    protected void spinnerCreater(){
+        //get the spinner from the xml.
+        Spinner dropdownType = findViewById(R.id.spinnerType);
+        Spinner dropdownGender = findViewById(R.id.spinnerGender);
+//create a list of items for the spinner.
+        String[] itemsType = new String[]{"Type 1", "Type 2", "Gestational", "Prediabetes"};
+        String[] itemsGender = new String[]{"Female", "Male", "Prefer not identify"};
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapterType = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsType);
+        ArrayAdapter<String> adapterGender = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGender);
+//set the spinners adapter to the previously created one.
+        dropdownType.setAdapter(adapterType);
+        dropdownGender.setAdapter(adapterGender);
     }
 }
