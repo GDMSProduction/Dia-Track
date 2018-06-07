@@ -56,7 +56,7 @@ public class SuggestedUnits extends AppCompatActivity {
 
         //double totalCarbs = foodActivity.totalCarbs;
         //float in = (float) (foodActivity.totalCarbs / sens);
-        quantityLabel.setText("5");
+        quantityLabel.setText("4");
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
