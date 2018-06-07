@@ -181,7 +181,6 @@ public void checkFirstSignIn()
 
     if (user != null && user.getEmail() != null)
     {
-
         DocumentReference docRef = db.collection("UserData").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
