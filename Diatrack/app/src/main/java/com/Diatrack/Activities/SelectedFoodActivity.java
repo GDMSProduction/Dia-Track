@@ -73,7 +73,7 @@ double fats;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectedFoodActivity.this, MealActivity.class));
-
+                totalCarbs = Integer.parseInt(FoodCarbs.getText().toString());
             }
         });
 
@@ -157,12 +157,11 @@ double fats;
         FoodFat.setText(foodNutrition.nf_total_fat+"");
         FoodQuantity.setText(foodNutrition.serving_qty+" ");
         FoodUnits.setText(foodNutrition.serving_unit+"");
-
+        totalCarbs = foodNutrition.nf_total_carbohydrate;
     }
 public void UpdateFood(Food foodNutrition)
 {
     carbs =foodNutrition.nf_total_carbohydrate;
-    totalCarbs =foodNutrition.nf_total_carbohydrate;
     calories = foodNutrition.nf_calories;
     protein = foodNutrition.nf_protein;
     fats =foodNutrition.nf_total_fat;
@@ -184,6 +183,7 @@ public void UpdateFood(Food foodNutrition)
         foodNutrition.nf_calories = foodNutrition.nf_calories -(calories * .25);
         foodNutrition.nf_protein =  foodNutrition.nf_protein -(protein * .25);
         foodNutrition.nf_total_fat = foodNutrition.nf_total_fat - (fats * .25);
+        totalCarbs =foodNutrition.nf_total_carbohydrate;
         updateViewInformation(foodNutrition);
     }
     }

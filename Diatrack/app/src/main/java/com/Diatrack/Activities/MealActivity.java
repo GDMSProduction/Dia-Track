@@ -1,6 +1,7 @@
 package com.Diatrack.Activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.Diatrack.Classes.Day;
 import com.Diatrack.Classes.FoodNutritionSearch;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,11 +23,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.Diatrack.Classes.FoodSearch;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -37,6 +47,10 @@ public class MealActivity extends AppCompatActivity {
     MealItemsAdapter adapter;
     public String mealName = "";
     private FoodSearch selectedItem;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference docRef;
+    Date now = new Date();
 SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +80,19 @@ SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MealActivity.this, SuggestedUnits.class));
-              // try {
-              //     //PostLog();
-              // } catch (IOException e) {
-              //     e.printStackTrace();
-              // }
+                // docRef = db.collection("UserData").document(user.getUid());
+                // docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                //     @Override
+                //     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                //         if (task.isSuccessful()) {
+                //             DocumentSnapshot document = task.getResult();
+                //             if (document.exists()) {
+                //                 document.getData();
+                //                 int insulin = (int) document.get("insulinsens");
+                //             }
+                //         }
+                //     }
+                // });
             }
         });
     }

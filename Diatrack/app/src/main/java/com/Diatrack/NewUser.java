@@ -13,11 +13,14 @@ import android.widget.TextView;
 import com.Diatrack.Activities.HomeActivity;
 import com.Diatrack.Activities.LoginActivity;
 import com.android.volley.AuthFailureError;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -39,6 +42,7 @@ import static com.Diatrack.R.id.txt_Height;
 public class NewUser extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference docRef = db.collection("UserData").document(user.getUid());
     TextView uGender;
     TextView uAge;
     TextView uHeight;
@@ -54,21 +58,42 @@ public class NewUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
+        uGender = findViewById(R.id.txt_usergender);
+        uAge = findViewById(R.id.num_Age);
+        uHeight = findViewById(R.id.num_Height);
+        uWeight = findViewById(R.id.num_Weight);
+        uMaxBlood = findViewById(R.id.num_MaxBlood);
+        uMinBlood = findViewById(R.id.num_MinBlood);
+        uTargetBlood = findViewById(R.id.num_Target);
+        uInsulinSens = findViewById(R.id.num_InsulinSens);
+        uType = findViewById(R.id.num_Type);
 
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        document.getData();
+                        uGender.setText((CharSequence) document.get("age"));
+                        uWeight.setText((Integer) document.get("weight"));
+                        uHeight.setText((Integer) document.get("height"));
+                        uGender.setText((CharSequence) document.get("gender"));
+                        uInsulinSens.setText((Integer) document.get("insulinsens"));
+                        uMaxBlood.setText((Integer) document.get("maxblood"));
+                        uMinBlood.setText((Integer) document.get("minblood"));
+                        uTargetBlood.setText((Integer) document.get("targetblood"));
+                        uType.setText((Integer) document.get("type"));
+                    }
+                }
+            }
+        });
 
         Button Save = findViewById(R.id.btn_SaveProfile);
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uGender = findViewById(R.id.txt_usergender);
-                uAge = findViewById(R.id.num_Age);
-                uHeight = findViewById(R.id.num_Height);
-                uWeight = findViewById(R.id.num_Weight);
-                uMaxBlood = findViewById(R.id.num_MaxBlood);
-                uMinBlood = findViewById(R.id.num_MinBlood);
-                uTargetBlood = findViewById(R.id.num_Target);
-                uInsulinSens = findViewById(R.id.num_InsulinSens);
-                uType = findViewById(R.id.num_Type);
+
                 final Map<String, Object> userInfo = new HashMap<>();
                 userInfo.put("gender", uGender.getText().toString());
                 userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
