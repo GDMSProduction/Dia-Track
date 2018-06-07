@@ -24,7 +24,6 @@ import java.util.Map;
 public class NewUser extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView uGender;
     TextView uAge;
     TextView uHeight;
     TextView uWeight;
@@ -32,12 +31,14 @@ public class NewUser extends AppCompatActivity {
     TextView uMinBlood;
     TextView uTargetBlood;
     TextView uInsulinSens;
-    TextView uType;
+    String[] itemsType;
+    String[] itemsGender;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new_user);
        uAge = findViewById(R.id.num_Age);
        uHeight = findViewById(R.id.txt_Height);
        uWeight = findViewById(R.id.num_Weight);
@@ -45,6 +46,7 @@ public class NewUser extends AppCompatActivity {
        uMinBlood = findViewById(R.id.num_MinBlood);
        uTargetBlood = findViewById(R.id.num_Target);
        uInsulinSens = findViewById(R.id.num_InsulinSens);
+
         final Map<String, Object> userInfo = new HashMap<>();
        //userInfo.put("gender", uGender.getText());
        //userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
@@ -55,37 +57,25 @@ public class NewUser extends AppCompatActivity {
        //userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
        //userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
        //userInfo.put("type", Integer.parseInt(uType.getText().toString()));
-        setContentView(R.layout.activity_new_user);
+
        // db.getReference();
-        Button Save = findViewById(R.id.btn_SaveProfile);
-        Save.setOnClickListener(new View.OnClickListener() {
+        spinnerCreater();
+        Button save =  findViewById(R.id.btn_SaveProfile);
+
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("UserData").document(user.getUid()).set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        startActivity(new Intent(NewUser.this, HomeActivity.class));
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                });
-
+                startActivity(new Intent(NewUser.this, HomeActivity.class));
             }
         });
-
-
     }
     protected void spinnerCreater(){
         //get the spinner from the xml.
         Spinner dropdownType = findViewById(R.id.spinnerType);
         Spinner dropdownGender = findViewById(R.id.spinnerGender);
 //create a list of items for the spinner.
-        String[] itemsType = new String[]{"Type 1", "Type 2", "Gestational", "Prediabetes"};
-        String[] itemsGender = new String[]{"Female", "Male", "Prefer not identify"};
+        itemsType = new String[]{"Type 1", "Type 2", "Gestational", "Prediabetes"};
+        itemsGender = new String[]{"Female", "Male", "Prefer not identify"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapterType = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsType);
