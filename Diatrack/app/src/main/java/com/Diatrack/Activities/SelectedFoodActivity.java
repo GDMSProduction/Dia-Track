@@ -87,6 +87,8 @@ double fats;
                 dataMap.putDouble("totalprotein", totalProtein);
                 intent.putExtras(dataMap);
                 startActivity(intent);
+
+
             }
         });
 

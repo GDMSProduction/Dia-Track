@@ -1,7 +1,9 @@
 package com.Diatrack;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class glycosenow extends AppCompatActivity {
     TextView glycose;
     double glycoselevel;
@@ -40,6 +46,13 @@ public class glycosenow extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef;
+    LocalDate currentDate = LocalDate.now();
+     DayOfWeek dow = currentDate.getDayOfWeek();
+     int day = currentDate.getDayOfMonth();
+     int doy = currentDate.getDayOfYear();
+     Month month = currentDate.getMonth();
+     int year = currentDate.getYear();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +64,9 @@ public class glycosenow extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        docRef = db.collection("UserDailyIntake").document(user.getUid() + now.getDay()+ now.getMonth() + now.getYear());
+
+        docRef = db.collection("UserDailyIntake").document(user.getUid() + day+month+year);
+
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -67,10 +82,15 @@ public class glycosenow extends AppCompatActivity {
                             time = (List<Date>) document.get("time");
                             time.add(currentTime);
                     }
+                    else
+                    {
+                        glycosel.add(glycoselevel);
+                        time.add(currentTime);
+                    }
                     final Map<String, Object> dailyintake = new HashMap<>();
                     dailyintake.put("glycose", glycosel);
                     dailyintake.put("time", time);
-                    db.collection("UserDailyIntake").document(user.getUid() + now.getDay()+ now.getMonth() + now.getYear()).set(dailyintake).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    db.collection("UserDailyIntake").document(user.getUid() + day+month+year).update(dailyintake).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             startActivity(new Intent(glycosenow.this, HomeActivity.class));

@@ -1,7 +1,9 @@
 package com.Diatrack.Activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,11 +38,15 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -61,7 +67,12 @@ public class HomeActivity extends AppCompatActivity
     double day2I;
     double day1I;
     double day0I;
-
+    LocalDate currentDate = LocalDate.now();
+    DayOfWeek dow = currentDate.getDayOfWeek();
+    int day = currentDate.getDayOfMonth();
+    int doy = currentDate.getDayOfYear();
+    Month month = currentDate.getMonth();
+    int year = currentDate.getYear();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,128 +183,118 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void CreateGraph()
-    {
+    public void CreateGraph() {
         final UserHistory[] day6 = new UserHistory[1];
 
 
         final Date now = new Date();
         final GraphView graph = (GraphView) findViewById(com.Diatrack.R.id.graph);
 
-       DocumentReference docRef = db.collection("UserDailyIntake").document(user.getUid());
-      // docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-      //     @Override
-      //     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-      //         if (task.isSuccessful()) {
-      //             DocumentSnapshot document = task.getResult();
-      //             if (document.exists()) {
-      //                 document.getData();
-      //                 glycose = (List<Double>) document.get("glycose");
-      //                time = (List<Long>) document.get("time");
-      //                 for (int i=0; i<glycose.size(); i++) {
-      //                     averageGlycose = averageGlycose + glycose.get(i);
-      //                 }
-      //                 averageGlycose = averageGlycose / glycose.size();
-      //                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+        DocumentReference docRef = db.collection("UserDailyIntake").document(user.getUid());
+        // docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        //     @Override
+        //     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        //         if (task.isSuccessful()) {
+        //             DocumentSnapshot document = task.getResult();
+        //             if (document.exists()) {
+        //                 document.getData();
+        //                 glycose = (List<Double>) document.get("glycose");
+        //                time = (List<Long>) document.get("time");
+        //                 for (int i=0; i<glycose.size(); i++) {
+        //                     averageGlycose = averageGlycose + glycose.get(i);
+        //                 }
+        //                 averageGlycose = averageGlycose / glycose.size();
+        //                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
 //
-      //                         new DataPoint(now.getDate() - 6, day6I),
-      //                         new DataPoint(now.getDate() - 5, day5I),
-      //                         new DataPoint(now.getDate() - 4, day4I),
-      //                         new DataPoint(now.getDate() - 3, day3I),
-      //                         new DataPoint(now.getDate() - 2, day2I),
-      //                         new DataPoint(now.getDate() - 1, day1I),
-      //                         new DataPoint(now.getDate(),averageGlycose)
-      //                 });
-      //                 graph.addSeries(series);
-      //             }
-      //         }
-      //     }
-      // });
-       db.collection("UserDailyIntake")
-              .get()
-              .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                  @Override
-                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                      if (task.isSuccessful()) {
-                          for (QueryDocumentSnapshot document : task.getResult()) {
-                              Log.d("TAG", document.getId() + " => " + document.getData());
+        //                         new DataPoint(now.getDate() - 6, day6I),
+        //                         new DataPoint(now.getDate() - 5, day5I),
+        //                         new DataPoint(now.getDate() - 4, day4I),
+        //                         new DataPoint(now.getDate() - 3, day3I),
+        //                         new DataPoint(now.getDate() - 2, day2I),
+        //                         new DataPoint(now.getDate() - 1, day1I),
+        //                         new DataPoint(now.getDate(),averageGlycose)
+        //                 });
+        //                 graph.addSeries(series);
+        //             }
+        //         }
+        //     }
+        // });
+        db.collection("UserDailyIntake")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
-                              if (document.getId() == user.getUid() + (now.getDay() - 6)+ now.getMonth() + now.getYear())
-                              {
-                                  glycose = (List<Double>) document.get("glycose");
-                                  for (int i=0; i<glycose.size(); i++) {
-                                      day6I = day6I + glycose.get(i);
-                                  }
-                                  day6I = day6I / glycose.size();
-                              }
-                              if (document.getId() == user.getUid() + (now.getDay() - 5)+ now.getMonth() + now.getYear())
-                              {
-                                  glycose = (List<Double>) document.get("glycose");
-                                  for (int i=0; i<glycose.size(); i++) {
-                                      day5I = day5I + glycose.get(i);
-                                  }
-                                  day5I = day5I / glycose.size();
-                              }
-                               if (document.getId() == user.getUid() + (now.getDay() - 4)+ now.getMonth() + now.getYear())
-                              {
-                                  glycose = (List<Double>) document.get("glycose");
-                                  for (int i=0; i<glycose.size(); i++) {
-                                      day4I = day4I + glycose.get(i);
-                                  }
-                                  day4I = day4I / glycose.size();
-                              }
-                               if (document.getId() == user.getUid() + (now.getDay() - 3)+ now.getMonth() + now.getYear())
-                                {
+                                if (document.getId().equals(user.getUid() + (day - 6) + month + year)) {
                                     glycose = (List<Double>) document.get("glycose");
-                                    for (int i=0; i<glycose.size(); i++) {
+                                    for (int i = 0; i < glycose.size(); i++) {
+                                        day6I = day6I + glycose.get(i);
+                                    }
+                                    day6I = day6I / glycose.size();
+                                }
+                                if (document.getId().equals(user.getUid() + (day - 5) + month + year)) {
+                                    glycose = (List<Double>) document.get("glycose");
+                                    for (int i = 0; i < glycose.size(); i++) {
+                                        day5I = day5I + glycose.get(i);
+                                    }
+                                    day5I = day5I / glycose.size();
+                                }
+                                if (document.getId().equals(user.getUid() + (day - 4) + month + year)) {
+                                    glycose = (List<Double>) document.get("glycose");
+                                    for (int i = 0; i < glycose.size(); i++) {
+                                        day4I = day4I + glycose.get(i);
+                                    }
+                                    day4I = day4I / glycose.size();
+                                }
+                                if (document.getId().equals(user.getUid() + (day - 3) + month + year)) {
+                                    glycose = (List<Double>) document.get("glycose");
+                                    for (int i = 0; i < glycose.size(); i++) {
                                         day3I = day3I + glycose.get(i);
                                     }
                                     day3I = day3I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay() - 2)+ now.getMonth() + now.getYear())
-                                {
+                                if (document.getId().equals(user.getUid() + (day - 2) + month + year)) {
                                     glycose = (List<Double>) document.get("glycose");
-                                    for (int i=0; i<glycose.size(); i++) {
+                                    for (int i = 0; i < glycose.size(); i++) {
                                         day2I = day2I + glycose.get(i);
                                     }
                                     day2I = day2I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay() - 1)+ now.getMonth() + now.getYear())
-                                {
+                                if (document.getId().equals(user.getUid() + (day - 1) + month + year)) {
                                     glycose = (List<Double>) document.get("glycose");
-                                    for (int i=0; i<glycose.size(); i++) {
+                                    for (int i = 0; i < glycose.size(); i++) {
                                         day1I = day1I + glycose.get(i);
                                     }
                                     day1I = day1I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay()) + now.getMonth() + now.getYear())
-                                {
+                                String testid = document.getId();
+                                String testu = user.getUid() + day + month + year;
+                                if (document.getId().equals(user.getUid() + day + month + year)) {
                                     glycose = (List<Double>) document.get("glycose");
-                                    for (int i=0; i<glycose.size(); i++) {
+                                    for (int i = 0; i < glycose.size(); i++) {
                                         day0I = day0I + glycose.get(i);
                                     }
                                     day0I = day0I / glycose.size();
                                 }
                             }
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
+                            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
+
+                                    new DataPoint(now.getDate() - 6, day6I),
+                                    new DataPoint(now.getDate() - 5, day5I),
+                                    new DataPoint(now.getDate() - 4, day4I),
+                                    new DataPoint(now.getDate() - 3, day3I),
+                                    new DataPoint(now.getDate() - 2, day2I),
+                                    new DataPoint(now.getDate() - 1, day1I),
+                                    new DataPoint(now.getDate(), day0I)
+                            });
+                            graph.addSeries(series);
                         }
+
                     }
                 });
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-
-                                        new DataPoint(now.getDate() - 6, day6I),
-                                        new DataPoint(now.getDate() - 5, day5I),
-                                        new DataPoint(now.getDate() - 4, day4I),
-                                        new DataPoint(now.getDate() - 3, day3I),
-                                        new DataPoint(now.getDate() - 2, day2I),
-                                        new DataPoint(now.getDate() - 1, day1I),
-                                        new DataPoint(now.getDate(),day0I)
-                                });
-                                graph.addSeries(series);
-    }
-    @Override
-    public void onBackPressed() {
 
     }
 
