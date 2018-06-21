@@ -256,7 +256,7 @@ public class HomeActivity extends AppCompatActivity
                                     }
                                     day3I = day3I / glycose.size();
                                 }
-                                if (document.getId().equals(user.getUid() + (day - 2) + month + year)) {
+                                if (document.getId().equals(user.getUid() + (day - 2) +  month + year)) {
                                     glycose = (List<Double>) document.get("glycose");
                                     for (int i = 0; i < glycose.size(); i++) {
                                         day2I = day2I + glycose.get(i);
