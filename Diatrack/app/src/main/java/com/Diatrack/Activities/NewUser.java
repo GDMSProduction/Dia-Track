@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.Diatrack.R;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Diatrack.Activities.HomeActivity;
 import com.Diatrack.Activities.LoginActivity;
@@ -146,14 +147,38 @@ public class NewUser extends AppCompatActivity {
 
                 final Map<String, Object> userInfo = new HashMap<>();
                 userInfo.put("gender", dropdownGender.getSelectedItem());
-                userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
                 userInfo.put("height", dropdownHeight.getSelectedItem());
-                userInfo.put("weight", Integer.parseInt(uWeight.getText().toString()));
-                userInfo.put("maxblood",Integer.parseInt(uMaxBlood.getText().toString()));
-                userInfo.put("minblood", Integer.parseInt(uMinBlood.getText().toString()));
-                userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
-                userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
                 userInfo.put("type", dropdownType.getSelectedItem());
+                if (uAge.getText() != null && !"".equals(uAge.getText().toString())) {
+                    userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Age is empty",Toast.LENGTH_LONG).show();}
+
+                if (uWeight.getText() != null && !"".equals(uWeight.getText().toString())) {
+                    userInfo.put("weight", Integer.parseInt(uWeight.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Weight is empty",Toast.LENGTH_LONG).show();}
+
+                if (uMaxBlood.getText() != null && !"".equals(uMaxBlood.getText().toString())) {
+                    userInfo.put("maxblood",Integer.parseInt(uMaxBlood.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Maximum Blood Sugar is empty",Toast.LENGTH_LONG).show();}
+
+                if (uMinBlood.getText() != null && !"".equals(uMinBlood.getText().toString())) {
+                    userInfo.put("minblood", Integer.parseInt(uMinBlood.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Minimum Blood Sugar is empty",Toast.LENGTH_LONG).show();}
+
+                if (uTargetBlood.getText() != null && !"".equals(uTargetBlood.getText().toString())) {
+                    userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Target Blood Sugar is empty",Toast.LENGTH_LONG).show();}
+
+                if (uInsulinSens.getText() != null && !"".equals(uInsulinSens.getText().toString())) {
+                    userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
+                }
+                else{  Toast.makeText(getApplicationContext(),"Insulin Sensitivity is empty",Toast.LENGTH_LONG).show();}
+
                 db.collection("UserData").document(user.getUid()).set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

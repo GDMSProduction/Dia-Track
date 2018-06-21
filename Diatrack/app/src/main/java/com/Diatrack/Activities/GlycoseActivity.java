@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.Diatrack.R;
-import com.Diatrack.glycosenow;
-import com.Diatrack.glycosetime;
 
 public class GlycoseActivity extends AppCompatActivity {
 

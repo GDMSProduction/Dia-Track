@@ -54,8 +54,8 @@
         <activity android:name=".Activities.SelectedFoodActivity" />
         <activity android:name=".Activities.Profile" />
         <activity android:name=".Activities.NewUser" />
-        <activity android:name=".glycosenow" />
-        <activity android:name=".glycosetime"></activity>
+        <activity android:name=".Activities.glycosenow" />
+        <activity android:name=".Activities.glycosetime"></activity>
     </application>
 
 </manifest>

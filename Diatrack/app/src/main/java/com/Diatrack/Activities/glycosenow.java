@@ -1,4 +1,4 @@
-package com.Diatrack;
+package com.Diatrack.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -6,12 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.Diatrack.Activities.HomeActivity;
-import com.Diatrack.Activities.MealOptionsActivity;
-import com.Diatrack.Activities.SuggestedUnits;
+import com.Diatrack.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -55,6 +53,7 @@ public class glycosenow extends AppCompatActivity {
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (glycose.getText().toString() != null && !"".equals(glycose.getText().toString())){
                 glycoselevel = Double.parseDouble(glycose.getText().toString());
 
                 if (task.isSuccessful()) {
@@ -84,7 +83,9 @@ public class glycosenow extends AppCompatActivity {
                     });
 
             }
-        };
+        }
+            else{ Toast.makeText(getApplicationContext(),"Glycose is Empty",Toast.LENGTH_SHORT).show();}
+            }
     });
 }});
     }}
