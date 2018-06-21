@@ -180,7 +180,7 @@ public class HomeActivity extends AppCompatActivity
         final Date now = new Date();
         final GraphView graph = (GraphView) findViewById(com.Diatrack.R.id.graph);
 
-       DocumentReference docRef = db.collection("UserDailyIntake").document(user.getUid() + (now.getDay()));
+       DocumentReference docRef = db.collection("UserDailyIntake").document(user.getUid());
       // docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
       //     @Override
       //     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -218,7 +218,7 @@ public class HomeActivity extends AppCompatActivity
                           for (QueryDocumentSnapshot document : task.getResult()) {
                               Log.d("TAG", document.getId() + " => " + document.getData());
 
-                              if (document.getId() == user.getUid() + (now.getDay() - 6))
+                              if (document.getId() == user.getUid() + (now.getDay() - 6)+ now.getMonth() + now.getYear())
                               {
                                   glycose = (List<Double>) document.get("glycose");
                                   for (int i=0; i<glycose.size(); i++) {
@@ -226,7 +226,7 @@ public class HomeActivity extends AppCompatActivity
                                   }
                                   day6I = day6I / glycose.size();
                               }
-                              if (document.getId() == user.getUid() + (now.getDay() - 5))
+                              if (document.getId() == user.getUid() + (now.getDay() - 5)+ now.getMonth() + now.getYear())
                               {
                                   glycose = (List<Double>) document.get("glycose");
                                   for (int i=0; i<glycose.size(); i++) {
@@ -234,7 +234,7 @@ public class HomeActivity extends AppCompatActivity
                                   }
                                   day5I = day5I / glycose.size();
                               }
-                               if (document.getId() == user.getUid() + (now.getDay() - 4))
+                               if (document.getId() == user.getUid() + (now.getDay() - 4)+ now.getMonth() + now.getYear())
                               {
                                   glycose = (List<Double>) document.get("glycose");
                                   for (int i=0; i<glycose.size(); i++) {
@@ -242,7 +242,7 @@ public class HomeActivity extends AppCompatActivity
                                   }
                                   day4I = day4I / glycose.size();
                               }
-                               if (document.getId() == user.getUid() + (now.getDay() - 3))
+                               if (document.getId() == user.getUid() + (now.getDay() - 3)+ now.getMonth() + now.getYear())
                                 {
                                     glycose = (List<Double>) document.get("glycose");
                                     for (int i=0; i<glycose.size(); i++) {
@@ -250,7 +250,7 @@ public class HomeActivity extends AppCompatActivity
                                     }
                                     day3I = day3I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay() - 2))
+                                 if (document.getId() == user.getUid() + (now.getDay() - 2)+ now.getMonth() + now.getYear())
                                 {
                                     glycose = (List<Double>) document.get("glycose");
                                     for (int i=0; i<glycose.size(); i++) {
@@ -258,7 +258,7 @@ public class HomeActivity extends AppCompatActivity
                                     }
                                     day2I = day2I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay() - 1))
+                                 if (document.getId() == user.getUid() + (now.getDay() - 1)+ now.getMonth() + now.getYear())
                                 {
                                     glycose = (List<Double>) document.get("glycose");
                                     for (int i=0; i<glycose.size(); i++) {
@@ -266,7 +266,7 @@ public class HomeActivity extends AppCompatActivity
                                     }
                                     day1I = day1I / glycose.size();
                                 }
-                                 if (document.getId() == user.getUid() + (now.getDay()))
+                                 if (document.getId() == user.getUid() + (now.getDay()) + now.getMonth() + now.getYear())
                                 {
                                     glycose = (List<Double>) document.get("glycose");
                                     for (int i=0; i<glycose.size(); i++) {

@@ -80,7 +80,7 @@ public class SuggestedUnits extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                docRef = db.collection("UserDailyIntake").document(user.getUid() + now.getDay());
+                docRef = db.collection("UserDailyIntake").document(user.getUid() + now.getDay() + now.getMonth() + now.getYear());
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
