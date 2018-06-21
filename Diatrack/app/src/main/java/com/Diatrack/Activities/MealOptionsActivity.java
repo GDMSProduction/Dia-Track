@@ -97,7 +97,6 @@ public class MealOptionsActivity extends AppCompatActivity {
         //final TextView TestAPI = (TextView)findViewById(R.id.TestAPI);
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView TestAPI = (TextView)findViewById(com.Diatrack.R.id.TestAPI);
         String url ="https://trackapi.nutritionix.com/v2/search/instant ";
 
 
@@ -108,7 +107,6 @@ public class MealOptionsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        TestAPI.setText(response);
                     }
                 },
                 new Response.ErrorListener() {
