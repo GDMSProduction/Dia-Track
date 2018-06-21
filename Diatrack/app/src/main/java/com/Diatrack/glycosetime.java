@@ -53,12 +53,11 @@ public class glycosetime extends AppCompatActivity {
         final Spinner Hour = findViewById(R.id.spinnerHour);
         final Spinner Min = findViewById(R.id.spinnerMin);
         final Spinner AMPM = findViewById(R.id.spinnerAMPM);
-        final Spinner Day = findViewById(R.id.spinnerDay);
-        final Spinner Month = findViewById(R.id.spinnerMonth);
+
 //create a list of items for the spinner.
         hour = new String[]{"1","2","3","4","5","6","7","8","9","11","12"};
         min = new String[]{"1","2","3","4","5","6","7","8","9","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
-        ampm = new String[]{"AM,PM"};
+        ampm = new String[]{"AM","PM"};
         day = new String[]{"1","2","3","4","5","6","7","8","9","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
         month = new String[]{"January","February","March","April","May","June","July","August","September","October","November","December"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -72,8 +71,7 @@ public class glycosetime extends AppCompatActivity {
         Hour.setAdapter(adapterHour);
         Min.setAdapter(adapterMin);
         AMPM.setAdapter(adapterAMPM);
-        Day.setAdapter(adapterDay);
-        Month.setAdapter(adapterMonth);
+
         Button save = (Button) findViewById(R.id.btn_Done);
         glycose = findViewById(R.id.glycoselevel);
         save.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +82,7 @@ public class glycosetime extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         glycoselevel = Double.parseDouble(glycose.getText().toString());
-                        currentTime = Month.getSelectedItem().toString() +" "+ Day.getSelectedItem().toString() + ", "  + now.getYear()  + Hour.getSelectedItem().toString() + ":" + Min.getSelectedItem().toString() + ":00 " + AMPM.getSelectedItem().toString();
+                        currentTime = Hour.getSelectedItem().toString() + ":" + Min.getSelectedItem().toString() + ":00 " + AMPM.getSelectedItem().toString();
 
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
