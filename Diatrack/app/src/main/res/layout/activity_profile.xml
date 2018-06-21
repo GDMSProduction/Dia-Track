@@ -57,13 +57,12 @@
         android:id="@+id/txt_InsulinSen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.5"
         android:background="@android:color/transparent"
         android:ems="10"
-        android:inputType="numberSigned"
+        android:inputType="text"
         android:text="8"
-        android:layout_weight="0.5"
-        android:textAlignment="center"
-        />
+        android:textAlignment="center" />
 
 
 </LinearLayout>
@@ -81,17 +80,17 @@
             android:layout_marginLeft="16dp"
             android:layout_weight="0.5"
             />
+
         <EditText
             android:id="@+id/txt_MaxBloodSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:inputType="numberSigned"
+            android:inputType="text"
             android:text="50"
-            android:layout_weight="0.5"
-            android:textAlignment="center"
-            />
+            android:textAlignment="center" />
 
 
 
@@ -115,13 +114,12 @@
             android:id="@+id/txt_MinBloodSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:inputType="numberSigned"
+            android:inputType="text"
             android:text="120"
-            android:layout_weight="0.5"
-            android:textAlignment="center"
-            />
+            android:textAlignment="center" />
 
 
 
@@ -140,16 +138,15 @@
         android:text="Weight"/>
 
     <EditText
-        android:id="@+id/txt_Weight"
+        android:id="@+id/txt_Weightview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.5"
         android:background="@android:color/transparent"
         android:ems="10"
-        android:layout_weight="0.5"
-        android:textAlignment="center"
-        android:inputType="numberSigned"
+        android:inputType="text"
         android:text="150"
-        />
+        android:textAlignment="center" />
 
 
 </LinearLayout>
@@ -168,16 +165,15 @@
         android:text="Height" />
 
     <EditText
-    android:id="@+id/txt_Height"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:ems="10"
+        android:id="@+id/txt_Height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:textAlignment="center"
-    android:inputType="numberSigned"
-    android:text="5 "
-    />
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="text"
+        android:text="5 "
+        android:textAlignment="center" />
 
 
 

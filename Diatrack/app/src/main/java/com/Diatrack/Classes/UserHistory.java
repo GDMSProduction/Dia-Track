@@ -1,17 +1,19 @@
 package com.Diatrack.Classes;
 
+import com.Diatrack.Activities.GlycoseActivity;
+
 public class UserHistory {
-    int Insulin;
+    int Glycose;
 
     public UserHistory() {
     }
 
-    public int getInsulin() {
-        return Insulin;
+    public int getGlycose() {
+        return Glycose;
     }
 
     public UserHistory(int Insulin) {
-        this.Insulin = Insulin;
+        this.Glycose = Glycose;
 
     }
 }

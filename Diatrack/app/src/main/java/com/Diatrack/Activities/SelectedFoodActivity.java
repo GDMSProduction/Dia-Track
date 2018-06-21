@@ -38,7 +38,9 @@ public class SelectedFoodActivity extends AppCompatActivity {
     TextView FoodUnits;
     TextView FoodQuantity;
     double totalCarbs;
-
+    double totalFats;
+    double totalCalories;
+    double totalProtein;
     String url ="https://trackapi.nutritionix.com/v2/natural/nutrients";
     String delims = "[,:]+";
     Food firstFood;
@@ -69,11 +71,22 @@ double fats;
         FoodQuantity = findViewById(R.id.tv_quantity);
 
         FoodLabel.setText("Loading");
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SelectedFoodActivity.this, MealActivity.class));
-                totalCarbs = Integer.parseInt(FoodCarbs.getText().toString());
+                //totalCarbs = Double.parseDouble(FoodCarbs.getText().toString());
+                //totalCalories = Double.parseDouble(FoodCalories.getText().toString());
+                //totalFats = Double.parseDouble(FoodFat.getText().toString());
+                //totalProtein = Double.parseDouble(FoodProtein.getText().toString());
+                Intent intent = new Intent(SelectedFoodActivity.this, MealActivity.class);
+                Bundle dataMap = new Bundle();
+                dataMap.putDouble("totalcarbs", totalCarbs);
+                dataMap.putDouble("totalcalories", totalCalories);
+                dataMap.putDouble("totalfats", totalFats);
+                dataMap.putDouble("totalprotein", totalProtein);
+                intent.putExtras(dataMap);
+                startActivity(intent);
             }
         });
 
@@ -162,9 +175,13 @@ double fats;
 public void UpdateFood(Food foodNutrition)
 {
     carbs =foodNutrition.nf_total_carbohydrate;
+    totalCarbs = totalCarbs + foodNutrition.nf_total_carbohydrate;
     calories = foodNutrition.nf_calories;
+    totalCalories = totalCalories + foodNutrition.nf_calories;
     protein = foodNutrition.nf_protein;
+    totalProtein = totalProtein + foodNutrition.nf_protein;
     fats =foodNutrition.nf_total_fat;
+    totalFats = totalFats + foodNutrition.nf_total_fat;
 }
     public void addone(Food foodNutrition){
         quantity += 0.25;

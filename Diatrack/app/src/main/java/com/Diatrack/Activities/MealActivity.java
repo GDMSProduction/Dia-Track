@@ -51,6 +51,10 @@ public class MealActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef;
     Date now = new Date();
+    double carbs;
+    double fats;
+    double calories;
+    double protein;
 SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,20 +83,20 @@ SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MealActivity.this, SuggestedUnits.class));
-                // docRef = db.collection("UserData").document(user.getUid());
-                // docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                //     @Override
-                //     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                //         if (task.isSuccessful()) {
-                //             DocumentSnapshot document = task.getResult();
-                //             if (document.exists()) {
-                //                 document.getData();
-                //                 int insulin = (int) document.get("insulinsens");
-                //             }
-                //         }
-                //     }
-                // });
+                Bundle bundle = getIntent().getExtras();
+                carbs = bundle.getDouble("totalcarbs");
+                fats = bundle.getDouble("totalfats");
+                calories = bundle.getDouble("totalcalories");
+                protein = bundle.getDouble("totalprotein");
+                Intent intent = new Intent(MealActivity.this, SuggestedUnits.class);
+                Bundle dataMap = new Bundle();
+                dataMap.putDouble("totalcarbs", carbs);
+                dataMap.putDouble("totalcalories", calories);
+                dataMap.putDouble("totalfats", fats);
+                dataMap.putDouble("totalprotein", protein);
+                intent.putExtras(dataMap);
+                startActivity(intent);
+
             }
         });
     }

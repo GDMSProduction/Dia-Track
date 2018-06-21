@@ -36,7 +36,7 @@ import static com.Diatrack.R.id.num_MinBlood;
 import static com.Diatrack.R.id.num_Target;
 import static com.Diatrack.R.id.num_Weight;
 
-import static com.Diatrack.R.id.txt_Weight;
+import static com.Diatrack.R.id.txt_Weightview;
 
 import static com.Diatrack.R.id.txt_Height;
 
@@ -55,6 +55,7 @@ public class NewUser extends AppCompatActivity {
     TextView uInsulinSens;
     String[] itemsType;
     String[] itemsGender;
+    String[] itemsHeight;
 
 
     @Override
@@ -82,29 +83,30 @@ public class NewUser extends AppCompatActivity {
 
        // db.getReference();
         spinnerCreater();
-        Button save =  findViewById(R.id.btn_SaveProfile);
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(NewUser.this, HomeActivity.class));
-            }
-        });
     }
     protected void spinnerCreater(){
         //get the spinner from the xml.
-        Spinner dropdownType = findViewById(R.id.spinnerType);
-        Spinner dropdownGender = findViewById(R.id.spinnerGender);
+        final Spinner dropdownType = findViewById(R.id.spinnerType);
+        final Spinner dropdownGender = findViewById(R.id.spinnerGender);
+        final Spinner dropdownHeight = findViewById(R.id.spinnerHeight);
 //create a list of items for the spinner.
         itemsType = new String[]{"Type 1", "Type 2", "Gestational", "Prediabetes"};
         itemsGender = new String[]{"Female", "Male", "Prefer not identify"};
+        itemsHeight = new String[]{"4ft 0in", "4ft 1in","4ft 2in","4ft 3in","4ft 4in","4ft 5in","4ft 6in","4ft 7in","4ft 8in",
+                "4ft 9in","4ft 10in","4ft 11in","5ft 0in","5ft 1in","5ft 2in","5ft 3in","5ft 4in","5ft 5in","5ft 6in","5ft 7in",
+                "5ft 8in","5ft 9in","5ft 10in","5ft 11in","6ft 0in","6ft 1in","6ft 2in","6ft 3in","6ft 4in","6ft 5in","6ft 6in",
+                "6ft 7in","6ft 8in","6ft 9in","6ft 10in","6ft 11in",};
+
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapterType = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsType);
         ArrayAdapter<String> adapterGender = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGender);
+        ArrayAdapter<String> adapterHeight = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsHeight);
 //set the spinners adapter to the previously created one.
         dropdownType.setAdapter(adapterType);
         dropdownGender.setAdapter(adapterGender);
+        dropdownHeight.setAdapter(adapterHeight);
 
        // uGender = findViewById(R.id.txt_usergender);
         uAge = findViewById(R.id.num_Age);
@@ -123,14 +125,14 @@ public class NewUser extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         document.getData();
-                        uGender.setText((CharSequence) document.get("age"));
-                        uWeight.setText((Integer) document.get("weight"));
-                        uHeight.setText((Integer) document.get("height"));
-                        uGender.setText((CharSequence) document.get("gender"));
-                        uInsulinSens.setText((Integer) document.get("insulinsens"));
-                        uMaxBlood.setText((Integer) document.get("maxblood"));
-                        uMinBlood.setText((Integer) document.get("minblood"));
-                        uTargetBlood.setText((Integer) document.get("targetblood"));
+                        uAge.setText( document.get("age").toString());
+                        uWeight.setText(document.get("weight").toString());
+                       // uHeight.setText(document.get("height").toString());
+                       // uGender.setText(document.get("gender").toString());
+                        uInsulinSens.setText(document.get("insulinsens").toString());
+                        uMaxBlood.setText(document.get("maxblood").toString());
+                        uMinBlood.setText(document.get("minblood").toString());
+                        uTargetBlood.setText(document.get("targetblood").toString());
                       //  uType.setText((Integer) document.get("type"));
                     }
                 }
@@ -143,15 +145,15 @@ public class NewUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 final Map<String, Object> userInfo = new HashMap<>();
-                userInfo.put("gender", uGender.getText().toString());
+                userInfo.put("gender", dropdownGender.getSelectedItem());
                 userInfo.put("age", Integer.parseInt(uAge.getText().toString()));
-                userInfo.put("height", Integer.parseInt(uHeight.getText().toString()));
+                userInfo.put("height", dropdownHeight.getSelectedItem());
                 userInfo.put("weight", Integer.parseInt(uWeight.getText().toString()));
                 userInfo.put("maxblood",Integer.parseInt(uMaxBlood.getText().toString()));
                 userInfo.put("minblood", Integer.parseInt(uMinBlood.getText().toString()));
                 userInfo.put("targetblood", Integer.parseInt(uTargetBlood.getText().toString()));
                 userInfo.put("insulinsens", Integer.parseInt(uInsulinSens.getText().toString()));
-                userInfo.put("type", Integer.parseInt(uAge.getText().toString()));
+                userInfo.put("type", dropdownType.getSelectedItem());
                 db.collection("UserData").document(user.getUid()).set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
