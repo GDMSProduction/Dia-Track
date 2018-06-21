@@ -54,12 +54,7 @@ public class glycosetime extends AppCompatActivity {
     String[] month;
     String[] year;
     String currentTime;
-    LocalDate currentDate = LocalDate.now();
-    DayOfWeek dow = currentDate.getDayOfWeek();
-    int dayOfMonth = currentDate.getDayOfMonth();
-    int doy = currentDate.getDayOfYear();
-    Month dateMonth = currentDate.getMonth();
-    int dateYear = currentDate.getYear();
+
     protected void Spinners()
     {
         final Spinner Hour = findViewById(R.id.spinnerHour);
@@ -87,14 +82,12 @@ public class glycosetime extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                docRef = db.collection("UserDailyIntake").document(user.getUid() + dayOfMonth+dateMonth+dateYear);
+                docRef = db.collection("UserDailyIntake").document(user.getUid() + now.getDay()+ now.getMonth() + now.getYear());
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        glycoselevel = Double.parseDouble(glycose.getText().toString());
-                        currentTime = dateMonth +" "+ dayOfMonth + ", "  + dateYear  + Hour.getSelectedItem().toString() + ":" + Min.getSelectedItem().toString() + ":00 " + AMPM.getSelectedItem().toString();
                         if (glycose.getText().toString() != null && !"".equals(glycose.getText().toString())){
-                         glycoselevel = Double.parseDouble(glycose.getText().toString());
+                            glycoselevel = Double.parseDouble(glycose.getText().toString());
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
@@ -128,14 +121,6 @@ public class glycosetime extends AppCompatActivity {
                                         System.out.println(e.getMessage());
                                     }
                                 });
-                            }
-                            final Map<String, Object> dailyintake = new HashMap<>();
-                            dailyintake.put("glycose", glycosel);
-                            dailyintake.put("time", time);
-                            db.collection("UserDailyIntake").document(user.getUid() + dayOfMonth+dateMonth+dateYear).update(dailyintake).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    startActivity(new Intent(glycosetime.this, HomeActivity.class));
 
                             }}
                         else{ Toast.makeText(getApplicationContext(),"Glycose is Empty",Toast.LENGTH_SHORT).show();}
@@ -153,4 +138,3 @@ public class glycosetime extends AppCompatActivity {
         Spinners();
     }
 }
-

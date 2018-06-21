@@ -83,8 +83,11 @@ SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = getIntent();
+
                 final ListView listView = findViewById(com.Diatrack.R.id.foodList);
-                if (listView.getAdapter().getCount() <= 0){
+
+                if (!intent.hasExtra("totalcarbs") && !intent.hasExtra("totalfats") && !intent.hasExtra("totalcalories") && !intent.hasExtra("totalprotein") ){
                     Toast.makeText(getApplicationContext(),"No Food was added",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -94,7 +97,7 @@ SelectedFoodActivity selectedFoodActivity = new SelectedFoodActivity();
                 calories = bundle.getDouble("totalcalories");
                 protein = bundle.getDouble("totalprotein");
 
-                Intent intent = new Intent(MealActivity.this, SuggestedUnits.class);
+                intent = new Intent(MealActivity.this, SuggestedUnits.class);
                 Bundle dataMap = new Bundle();
                 dataMap.putDouble("totalcarbs", carbs);
                 dataMap.putDouble("totalcalories", calories);
